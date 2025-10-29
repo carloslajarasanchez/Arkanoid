@@ -13,17 +13,23 @@ public class Ball : MonoBehaviour
     private Vector2 _initialPosition;
 
     [Header("Dependencias")]
-    public GameObject LaunchParent;
+    [SerializeField]private GameObject _launchParent;
     // Start is called before the first frame update
     void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
-        transform.SetParent(LaunchParent.transform, true);
         _initialPosition = transform.position;
+        transform.SetParent(_launchParent.transform, true);
+        
     }
 
     // Update is called once per frame
     void Update()
+    {
+        LaunchBall();
+    }
+
+    private void LaunchBall()
     {
         if (!_launched)
         {
@@ -32,7 +38,7 @@ public class Ball : MonoBehaviour
                 Debug.Log("Entro Espacio");
                 transform.parent = null;
                 _rb2D.AddForce(_initialDirection * velocity);
-                
+
                 _launched = true;
             }
         }
@@ -42,7 +48,20 @@ public class Ball : MonoBehaviour
     {
         if (collision.CompareTag("Limit"))
         {
-            SceneManager.LoadSceneAsync(0);
+            _rb2D.velocity = Vector2.zero;
+            _launched = false;
+            GameManager.Instance.RestLifes(1);
+            ResetBall();
         }
+    }
+
+    private void ResetBall()
+    {
+        Vector2 ballPosition = new Vector2();
+        ballPosition.y = _launchParent.transform.position.y + _launchParent.transform.localScale.y / 2 + transform.localScale.y / 2;
+        ballPosition.x = _launchParent.transform.position.x;
+        transform.position = ballPosition;
+        transform.SetParent(_launchParent.transform, true);
+        
     }
 }
