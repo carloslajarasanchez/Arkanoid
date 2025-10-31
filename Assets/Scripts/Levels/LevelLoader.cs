@@ -36,18 +36,23 @@ public class LevelLoader : MonoBehaviour
             Debug.LogError($"No se encontró el archivo {fileName}.json en la carpeta Resources.");
             return;
         }
+        else
+        {
+            Debug.Log($"Archivo encontrado: {fileName}.json");
+            Debug.Log($"Contenido JSON: {jsonFile.text}");
+        }
 
         // Deserializar JSON
         LevelData data = JsonUtility.FromJson<LevelData>(jsonFile.text);
 
         // Generar bloques
         remainingBlocks = 0;
-        for (int row = 0; row < data.rows.Length; row++)
+        for (int row = 0; row < data.rows.Count; row++)
         {
-            for (int col = 0; col < data.rows[row].Length; col++)
+            for (int col = 0; col < data.rows[row].cols.Count; col++)
             {
-                int blockType = data.rows[row][col];
-                if (blockType == 0) continue; // 0 = vacío
+                int blockType = data.rows[row].cols[col];
+                if (blockType == 0) continue;
 
                 if (blockType < blockPrefabs.Length && blockPrefabs[blockType] != null)
                 {

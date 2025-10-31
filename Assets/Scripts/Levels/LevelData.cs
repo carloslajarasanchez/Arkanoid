@@ -1,8 +1,15 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
+[System.Serializable]
+public class LevelRow
+{
+    public System.Collections.Generic.List<int> cols;
+}
+
+[System.Serializable]
 public class LevelData
 {
-    public int[][] rows;
+    public System.Collections.Generic.List<LevelRow> rows;
 }
