@@ -3,7 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float _velocity = 2f;
+    [SerializeField] private float _velocity = 7f;
 
     [Header("Limits")]
     [SerializeField]private GameObject _wallRight;
