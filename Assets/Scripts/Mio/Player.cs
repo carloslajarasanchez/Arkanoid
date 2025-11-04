@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        if (Input.GetAxis("Horizontal") != 0)
+        if (Input.GetAxisRaw("Horizontal") != 0)
         {
 
             float direction = Input.GetAxis("Horizontal");// Guardamos el valor del input horizontal del jugador

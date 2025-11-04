@@ -5,20 +5,20 @@ using System.Linq;
 public class LevelLoader : MonoBehaviour
 {
     [Header("Prefabs de bloques por tipo (índice = número en JSON)")]
-    public GameObject[] blockPrefabs;
+    [SerializeField] private GameObject[] blockPrefabs;// Prefabs de los bloques a instanciar
 
     [Header("Configuración del nivel")]
-    public float blockWidth = 1f;
-    public float blockHeight = 0.5f;
-    public Vector2 startPos = new Vector2(-4f, 4f);
+    [SerializeField]private float blockWidth = 1f;// Ancho de los bloques
+    [SerializeField]private float blockHeight = 0.5f;// Alto de los bloques
+    public Vector2 startPos = new Vector2(-4f, 4f);// Posicion inicial donde se instancian los bloques
 
     private int remainingBlocks = 0;
-    private bool loadingNext = false;
+    private bool loadingNext = false;// Para controlar cuando pasar al siguiente nivel
 
     void Start()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
-        LoadLevel(currentScene.ToLower()); // ejemplo: "Level1" -> "level1.json"
+        string currentScene = SceneManager.GetActiveScene().name;// Guardamos el nombre de la escena ya que sera el mismo que el del archivo json del nivel
+        LoadLevel(currentScene.ToLower()); // Converimos en minusculas: "Level1" -> "level1.json"
     }
 
     void LoadLevel(string fileName)
@@ -81,6 +81,7 @@ public class LevelLoader : MonoBehaviour
 
     void HandleBlockDestroyed()
     {
+        Debug.Log("HandleBlockDestroyed");
         remainingBlocks--;
 
         if (remainingBlocks <= 0 && !loadingNext)

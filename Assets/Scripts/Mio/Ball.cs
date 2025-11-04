@@ -5,63 +5,64 @@ using UnityEngine.SceneManagement;
 public class Ball : MonoBehaviour
 {
     [Header("Movimiento")]
-    [SerializeField] private Vector2 _initialDirection = new Vector2(1, 2);
-    [SerializeField] private float velocity = 5f;
+    [SerializeField] private Vector2 _initialDirection = new Vector2(1, 2);// Variable que controla la direccion de lanzamiento de la bola
+    [SerializeField] private float velocity = 5f;// Variable para la velocidad de la bola
 
-    private Rigidbody2D _rb2D;
-    private bool _launched = false;
-    private Vector2 _initialPosition;
+    private Rigidbody2D _rb2D;// Rigidbody2D de la bola
+    private bool _launched = false;// Variable para controlar si la bola se ha lanzado
 
     [Header("Dependencias")]
-    [SerializeField]private GameObject _launchParent;
+    [SerializeField]private GameObject _launchParent;// Referencia a la pala
+
     // Start is called before the first frame update
     void Start()
     {
-        _rb2D = GetComponent<Rigidbody2D>();
-        _initialPosition = transform.position;
-        transform.SetParent(_launchParent.transform, true);
+        _rb2D = GetComponent<Rigidbody2D>();// Seteamos la variable Rigidbody de la bola para poder modificarla
+        ResetBall();// Reseteamos la posición de la bola a la de la Pala
+        transform.SetParent(_launchParent.transform, true);// Convertimos a la Pala en padre de la bola para que siga su movimiento
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        LaunchBall();
+        LaunchBall();// Lanzamos bola
     }
 
+    // Metodo para lanzar la bola
     private void LaunchBall()
     {
-        if (!_launched)
+        if (!_launched)// Si no se ha lanzado todavia la bola
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))// Y se presiona espacio
             {
-                Debug.Log("Entro Espacio");
-                transform.parent = null;
-                _rb2D.AddForce(_initialDirection * velocity);
+                transform.parent = null;// Hacemos que la Pala deje de ser el hijo de la bola
+                _rb2D.velocity = _initialDirection * velocity;// Aplicamos a la bola una velocidad hacia la direccion inicial que decidimos
 
-                _launched = true;
+                _launched = true;// Para que a la bola no se le pueda volver a aplicar otra fuerza hasta que no se reinicie
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Limit"))
+        if (collision.CompareTag("Limit"))// Comparamos si ha atravesado los limites
         {
-            _rb2D.velocity = Vector2.zero;
-            _launched = false;
-            GameManager.Instance.RestLifes(1);
-            ResetBall();
+            _rb2D.velocity = Vector2.zero;// Seteamos la velocidad de la bola a cero para evitar que se le siga aplicando una fuerza
+            _launched = false;// Cambiamos para poder volver a lanzar la bola
+            GameManager.Instance.RestLifes(1);// Llamamos al GameManager para restar vidas del jugador
+            ResetBall();// Reiniciamos la posicion del jugador
         }
     }
 
+    // Metodo para resetear la posicion de la bola a la Pala
     private void ResetBall()
     {
-        Vector2 ballPosition = new Vector2();
-        ballPosition.y = _launchParent.transform.position.y + _launchParent.transform.localScale.y / 2 + transform.localScale.y / 2;
-        ballPosition.x = _launchParent.transform.position.x;
-        transform.position = ballPosition;
-        transform.SetParent(_launchParent.transform, true);
+        Vector2 ballPosition = new Vector2();// Creamos un Vector2 
+        ballPosition.y = _launchParent.transform.position.y + _launchParent.transform.localScale.y / 2 + transform.localScale.y / 2;// Calculamos la posicion en Y respecto a la pala
+        ballPosition.x = _launchParent.transform.position.x;// Calculamos la posicion X respecto a la Pala
+        transform.position = ballPosition;// Asignamos al transform el Vector2 que hemos calculado
+        transform.SetParent(_launchParent.transform, true);// Volvemos a emparentar la bola a la Pala para que siga su movimiento
         
     }
 }

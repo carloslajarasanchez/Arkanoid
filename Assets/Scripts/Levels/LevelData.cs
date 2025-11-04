@@ -5,11 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class LevelRow
 {
-    public System.Collections.Generic.List<int> cols;
+    public List<int> cols;
 }
 
 [System.Serializable]
 public class LevelData
 {
-    public System.Collections.Generic.List<LevelRow> rows;
+    public List<LevelRow> rows;
 }
