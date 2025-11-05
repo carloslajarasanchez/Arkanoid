@@ -12,13 +12,32 @@ public class LevelLoader : MonoBehaviour
     [SerializeField]private float blockHeight = 0.5f;// Alto de los bloques
     public Vector2 startPos = new Vector2(-4f, 4f);// Posicion inicial donde se instancian los bloques
 
-    private int remainingBlocks = 0;
-    private bool loadingNext = false;// Para controlar cuando pasar al siguiente nivel
+    private int _remainingBlocks = 0;
+    private bool _loadingNext = false;// Para controlar cuando pasar al siguiente nivel
+    private string _level = "level";
+
+    private int _counter = 1;// Contador de niveles
+    private int _totalLevels;// Cantidad de niveles
+
+
+    private Player _player;
+    private Ball _ball;
 
     void Start()
     {
-        string currentScene = SceneManager.GetActiveScene().name;// Guardamos el nombre de la escena ya que sera el mismo que el del archivo json del nivel
-        LoadLevel(currentScene.ToLower()); // Converimos en minusculas: "Level1" -> "level1.json"
+        _player = FindAnyObjectByType<Player>();
+        _ball = FindAnyObjectByType<Ball>();
+
+        // Cargar todos los archivos JSON que empiecen por "level"
+        TextAsset[] allLevels = Resources.LoadAll<TextAsset>("");
+
+        // Filtrar solo los que contienen "level" en el nombre
+        _totalLevels = allLevels.Count(t => t.name.StartsWith("level"));
+
+        Debug.Log($"Se encontraron {_totalLevels} niveles.");
+
+        string levelname = _level + _counter.ToString();
+        LoadLevel(levelname); // Cargamos el nivel
     }
 
     void LoadLevel(string fileName)
@@ -30,7 +49,7 @@ public class LevelLoader : MonoBehaviour
         }
 
         // Cargar JSON desde Resources
-        TextAsset jsonFile = Resources.Load<TextAsset>(fileName);
+        TextAsset jsonFile = Resources.Load<TextAsset>(fileName);// Recogemos el archivo json
         if (jsonFile == null)
         {
             Debug.LogError($"No se encontró el archivo {fileName}.json en la carpeta Resources.");
@@ -46,7 +65,7 @@ public class LevelLoader : MonoBehaviour
         LevelData data = JsonUtility.FromJson<LevelData>(jsonFile.text);
 
         // Generar bloques
-        remainingBlocks = 0;
+        _remainingBlocks = 0;
         for (int row = 0; row < data.rows.Count; row++)
         {
             for (int col = 0; col < data.rows[row].cols.Count; col++)
@@ -67,7 +86,7 @@ public class LevelLoader : MonoBehaviour
                     if (ctrl != null)
                         ctrl.OnBlockDestroyed += HandleBlockDestroyed;
 
-                    remainingBlocks++;
+                    _remainingBlocks++;
                 }
                 else
                 {
@@ -76,36 +95,36 @@ public class LevelLoader : MonoBehaviour
             }
         }
 
-        Debug.Log($"Nivel {fileName} cargado con {remainingBlocks} bloques.");
+        Debug.Log($"Nivel {fileName} cargado con {_remainingBlocks} bloques.");
     }
 
     void HandleBlockDestroyed()
     {
         Debug.Log("HandleBlockDestroyed");
-        remainingBlocks--;
+        _remainingBlocks--;
 
-        if (remainingBlocks <= 0 && !loadingNext)
+        if (_remainingBlocks <= 0 && !_loadingNext)
         {
-            loadingNext = true;
+            _loadingNext = true;
             Debug.Log("Nivel completado. Cargando siguiente...");
-            Invoke(nameof(LoadNextScene), 1.5f);
+            Invoke(nameof(LoadNextLevel), 1.5f);
         }
     }
 
-    void LoadNextScene()
+    void LoadNextLevel()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = currentSceneIndex + 1;
+        _counter++;
+        if (_counter > _totalLevels)
+        {
+            Debug.Log("¡Has completado todos los niveles!");
+            //TODO: Cargar escena final o de victoria
+            return;
+        }
+        string levelname = _level + _counter.ToString();
 
-        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
-        {
-            SceneManager.LoadScene(nextSceneIndex);
-        }
-        else
-        {
-            Debug.Log("No hay más niveles. ¡Has completado el juego!");
-            // Aquí puedes cargar una escena de victoria o volver al menú:
-            // SceneManager.LoadScene(0);
-        }
+        _player.ResetToInitialPosition();// Reiniciamos posicion del player
+        _ball.ResetBall();// Reiniciamos posicion de la bola
+
+        LoadLevel( levelname );
     }
 }

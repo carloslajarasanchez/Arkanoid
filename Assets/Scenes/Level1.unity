@@ -955,7 +955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419b54f997e66ba498b306f98f772c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocity: 7
+  _velocity: 12
   _wallRight: {fileID: 792811480}
   _wallLeft: {fileID: 1001473304}
 --- !u!61 &856294812
@@ -1474,8 +1474,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630a7343c890af34d896c8bc865c7108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialDirection: {x: 2, y: 4}
-  velocity: 2
+  _initialDirection: {x: 1, y: 2}
+  velocity: 10
   _launchParent: {fileID: 856294807}
 --- !u!1 &1381979113
 GameObject:

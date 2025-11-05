@@ -11,11 +11,13 @@ public class Player : MonoBehaviour
 
     private float _minLimit;
     private float _maxLimit;
+    private Vector2 _initialPosition;
  
 
     // Start is called before the first frame update
     void Start()
     {
+        _initialPosition = transform.position;
         CalculateLimits();
     }
 
@@ -42,5 +44,10 @@ public class Player : MonoBehaviour
     {
         _minLimit = _wallLeft.transform.position.x + _wallLeft.transform.localScale.x/2 + transform.localScale.x/2;
         _maxLimit = _wallRight.transform.position.x - _wallRight.transform.localScale.x/2 - transform.localScale.x/2;
+    }
+
+    public void ResetToInitialPosition()
+    {
+        transform.position = _initialPosition;
     }
 }

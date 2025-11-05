@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ResetLevel()
     {
+        //TODO: Arreglar reseteo de nivel
         yield return new WaitForSeconds(3f);
         Scene actualScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(actualScene.name);
