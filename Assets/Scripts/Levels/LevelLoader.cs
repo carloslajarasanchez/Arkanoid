@@ -100,6 +100,7 @@ public class LevelLoader : MonoBehaviour
 
     void HandleBlockDestroyed()
     {
+        //TODO: Agregar una clase aparte que haga generacion de powerUps Aleatoriamente con un random (Hay que añadir un array de prefabs de powerUps y elegir aleatoriamente entre la lista y si se va a generar o no)
         Debug.Log("HandleBlockDestroyed");
         _remainingBlocks--;
 
@@ -113,9 +114,11 @@ public class LevelLoader : MonoBehaviour
 
     void LoadNextLevel()
     {
+        Debug.Log($"Counter: {_counter}");
         _counter++;
         if (_counter > _totalLevels)
         {
+            // TODO: NO FUNCIONA
             Debug.Log("¡Has completado todos los niveles!");
             //TODO: Cargar escena final o de victoria
             return;

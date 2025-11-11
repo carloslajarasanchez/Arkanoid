@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     private int _lifes = 3;
+    private int _points = 0;
+    
 
 
     // Start is called before the first frame update
@@ -44,6 +46,24 @@ public class GameManager : MonoBehaviour
             UIManager.Instance.RestLifesUI(_lifes);
             StartCoroutine(ResetLevel());
         }        
+    }
+
+    public void AddPoints(int points)
+    {
+        _points += points;
+        UIManager.Instance.UpdatePoints(_points);
+    }
+
+    public void AddLifes(int life)
+    {
+        if(_lifes < 3)
+        {
+            _lifes += life;
+        }
+        else
+        {
+            Debug.Log("Tienes las vidas maximas");
+        }
     }
 
     IEnumerator ResetLevel()

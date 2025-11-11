@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void CalculateLimits()
+    public void CalculateLimits()
     {
         _minLimit = _wallLeft.transform.position.x + _wallLeft.transform.localScale.x/2 + transform.localScale.x/2;
         _maxLimit = _wallRight.transform.position.x - _wallRight.transform.localScale.x/2 - transform.localScale.x/2;
@@ -49,5 +49,18 @@ public class Player : MonoBehaviour
     public void ResetToInitialPosition()
     {
         transform.position = _initialPosition;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PowerUp"))
+        {
+            PowerUp powerUp = collision.gameObject.GetComponent<PowerUp>();
+
+            if (powerUp != null)
+            {
+                powerUp.ApplyEffect();
+            }
+        }
     }
 }

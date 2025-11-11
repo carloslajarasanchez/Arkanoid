@@ -11,18 +11,13 @@ public abstract class PowerUp : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player")) // Paleta
-        {
-            ApplyEffect(collision.gameObject);
-            Destroy(gameObject);
-        }
-        else if (collision.CompareTag("Limit")) // Límite inferior
+    { 
+        if (collision.CompareTag("Limit")) // Límite inferior
         {
             Destroy(gameObject);
         }
     }
 
     // Cada power-up implementa su propio efecto
-    protected abstract void ApplyEffect(GameObject player);
+    public abstract void ApplyEffect();
 }
