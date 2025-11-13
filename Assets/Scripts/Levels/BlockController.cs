@@ -3,17 +3,36 @@ using System;
 
 public class BlockController : MonoBehaviour
 {
-    public int hitsToBreak = 1;
-    public int points = 0;
-    public event Action OnBlockDestroyed;
+    [SerializeField]private BlockData data;
+    private int _hitsToBreak;
+    private int _points;
+    private SpriteRenderer spriteRenderer;
 
+    public event Action OnBlockDestroyed;
+    // TODO: CREAR UN MANAGER DE EVENTOS SI DA TIEMPO
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = data.initialSprite;
+
+        _hitsToBreak = data.Hits;
+        _points = data.Points;
+    }
     public void Hit()
     {
-        hitsToBreak--;
-        if (hitsToBreak <= 0)
+        _hitsToBreak--;
+        //Para cambiar el sprite cuando le quede 1 golpe para romperse
+        if (_hitsToBreak - 1 == 0)
         {
+            spriteRenderer.sprite = data.brokeSprite;
+        }
+
+        if (_hitsToBreak <= 0)
+        {
+            //TODO: EVENTMANAGER
             OnBlockDestroyed?.Invoke();
-            GameManager.Instance.AddPoints(points);
+            GameManager.Instance.AddPoints(_points);
             Destroy(gameObject);
         }
     }

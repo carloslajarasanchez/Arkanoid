@@ -5,11 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    //private static GameManager _instance;
+    //public  GameManager Instance
+    //{
+    //  get
+    //  {
+            
+    //  }
+    //  private set;
+    //}
     public static GameManager Instance { get; private set; }
     private int _lifes = 3;
     private int _points = 0;
-    
 
+ 
 
     // Start is called before the first frame update
     void Awake()

@@ -125,6 +125,7 @@ public class LevelLoader : MonoBehaviour
         }
         string levelname = _level + _counter.ToString();
 
+        //TODO: CREAR UN EVENTO PARA QUE SE SUSCRIBA LOS ELEMENTOS QUE TIENEN QUE REACCIONAR AL COMPLETAR UN NIVEL O PERDER
         _player.ResetToInitialPosition();// Reiniciamos posicion del player
         _ball.ResetBall();// Reiniciamos posicion de la bola
 
