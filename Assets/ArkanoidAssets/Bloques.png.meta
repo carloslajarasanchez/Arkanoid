@@ -753,7 +753,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 52
-        width: 24
+        width: 8
         height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1125,6 +1125,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Bloques_49
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 52
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20f15bdcb7b397c4294387b0786ff11d
+      internalID: -227898124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloques_50
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 52
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2a2d9bca313d8847b0eafefbb06d45f
+      internalID: -1781718920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1180,7 +1222,9 @@ TextureImporter:
       Bloques_46: 816341417
       Bloques_47: -891040578
       Bloques_48: -824447532
+      Bloques_49: -227898124
       Bloques_5: 434778906
+      Bloques_50: -1781718920
       Bloques_6: -1083437641
       Bloques_7: 1965708050
       Bloques_8: -2072556852

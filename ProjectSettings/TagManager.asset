@@ -6,15 +6,16 @@ TagManager:
   tags:
   - Limit
   - Ball
+  - PowerUp
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
+  - PowerUp
+  - Ball
   - 
   - 
   - 

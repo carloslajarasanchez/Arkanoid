@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +9,15 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [SerializeField] private List<Image> _imagesLife;
+    [Header("Canvas Juego")]
     [SerializeField] private TextMeshProUGUI _textPoints;
+    [SerializeField] private TextMeshProUGUI _textLifes;
+    [SerializeField] private TextMeshProUGUI _textTimer;
+
+    [Header("Canvas GameOver")]
+    [SerializeField] private CanvasGroup _gameOverScreen;
+    [SerializeField] private float _fadeDuration = .5f;
+    [SerializeField] private TextMeshProUGUI _textRanking;
 
     private int _currentPoints = 0;     // Valor mostrado actualmente
     private Coroutine _pointsCoroutine; // Para evitar solapamiento de animaciones
@@ -80,13 +88,71 @@ public class UIManager : MonoBehaviour
         _pointsCoroutine = null;
     }
 
-
-
-    public void RestLifesUI(int life)
+    public void UpdateLife(int lifes)
     {
-        for(int i = _imagesLife.Count - 1;  i >= life ; i--)
+        _textLifes.text = lifes.ToString() + " UP";
+    }
+
+    public void UpdateTimer(float time)
+    {
+        _textTimer.text = FormatTime(time);
+    }
+    private string FormatTime(float time)
+    {
+       int minutes = (int)(time / 60f);
+       int seconds = (int)(time - minutes / 60f);
+       int cents = (int)((time - (int)time) * 100f);
+
+        return string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, cents);
+    }
+
+    void PrintRanking()
+    {
+        _textRanking.text = "";// Reseteamos el ranking
+        List<ScoreData> ranking = ScoreManager.Instance.LoadRanking();
+
+        for (int i = 0; i < ranking.Count; i++)
         {
-            _imagesLife[i].gameObject.SetActive(false);
+            _textRanking.text += $"{i + 1}º   {ranking[i].Level}   |   {FormatTime(ranking[i].Time)}   |   {ranking[i].Score} \n";
         }
+    }
+
+    public void ShowGameOverScreen()
+    {
+        StartFade(1);
+        PrintRanking();
+    }
+
+    public void HideGameOverScreen()
+    {
+        StartFade(1);
+    }
+
+    private void StartFade(float targetAlpha)
+    {
+        StartCoroutine(FadeCoroutine(targetAlpha));
+    }
+
+    private IEnumerator FadeCoroutine(float target)
+    {
+        float start = _gameOverScreen.alpha;
+        float time = 0;
+
+        while (time < _fadeDuration)
+        {
+            time += Time.deltaTime;
+            _gameOverScreen.alpha = Mathf.Lerp(start, target, time / _fadeDuration);
+
+            // Evita interaciones cuando no esta visible
+            _gameOverScreen.interactable = target > 0.5f;
+            _gameOverScreen.blocksRaycasts = target > 0.5f;
+
+            yield return null;
+        }
+
+        _gameOverScreen.alpha = target;
+        // Vuelven las interaciones cuando esta visible
+        _gameOverScreen.interactable = target > 0.5f;
+        _gameOverScreen.blocksRaycasts = target > 0.5f;
     }
 }

@@ -16,7 +16,10 @@ public class GameManager : MonoBehaviour
     //}
     public static GameManager Instance { get; private set; }
     private int _lifes = 3;
+    // Para guardar en ranking
     private int _points = 0;
+    private float _time=0;
+    private int _level=0;
 
  
 
@@ -45,15 +48,18 @@ public class GameManager : MonoBehaviour
         if(this._lifes > rest)
         {
             this._lifes -= rest;
-            Debug.Log($"Vidas restantes: {_lifes}");
-            UIManager.Instance.RestLifesUI(_lifes);
+            Debug.Log($"Has perdido vida: {_lifes}");
+            UIManager.Instance.UpdateLife(_lifes);
         }
         else
         {
             this._lifes = 0; // asegúrate de fijar a cero
             Debug.Log("Has perdido");
-            UIManager.Instance.RestLifesUI(_lifes);
-            StartCoroutine(ResetLevel());
+            UIManager.Instance.UpdateLife(_lifes);// Actualizamos las vidas
+            EventManager.Instance.InvokeGameFinished();// Noticiamos que la partida ha terminado
+            ScoreManager.Instance.AddNewScore(_level,_time,_points);// Guardamos la puntuacion en el ranking
+            UIManager.Instance.ShowGameOverScreen();// Mostramos la pantalla de GameOver
+            //StartCoroutine(ResetLevel());
         }        
     }
 
@@ -64,23 +70,37 @@ public class GameManager : MonoBehaviour
     }
 
     public void AddLifes(int life)
-    {
-        if(_lifes < 3)
-        {
-            _lifes += life;
-        }
-        else
-        {
-            Debug.Log("Tienes las vidas maximas");
-        }
+    {        
+        _lifes += life;
+        UIManager.Instance.UpdateLife(_lifes);
+        Debug.Log($"Suma de vida: {_lifes}");
     }
 
-    IEnumerator ResetLevel()
-    {
-        //TODO: Arreglar reseteo de nivel
-        yield return new WaitForSeconds(3f);
-        Scene actualScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(actualScene.name);
+    public void RestartLevel()
+    {       
+        // De momento resetea a la escena de inicio
+        SceneManager.LoadScene(1);
     }
-    
+
+    public void ExitMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    /// <summary>
+    /// Metodo para actualizar el tiempo para guardarlo en el ranking
+    /// </summary>
+    /// <param name="time"></param>
+    public void SetTime(float time)
+    {
+        this._time = time;
+    }
+    /// <summary>
+    /// Metodo para actualizar el nivel para guardarlo en el ranking
+    /// </summary>
+    /// <param name="level">Nivel al que ha llegado el jugador</param>
+    public void SetLevel(int level)
+    {
+        this._level = level;
+    }
 }

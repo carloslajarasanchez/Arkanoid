@@ -19,15 +19,8 @@ public class LevelLoader : MonoBehaviour
     private int _counter = 1;// Contador de niveles
     private int _totalLevels;// Cantidad de niveles
 
-
-    private Player _player;
-    private Ball _ball;
-
     void Start()
     {
-        _player = FindAnyObjectByType<Player>();
-        _ball = FindAnyObjectByType<Ball>();
-
         // Cargar todos los archivos JSON que empiecen por "level"
         TextAsset[] allLevels = Resources.LoadAll<TextAsset>("");
 
@@ -37,11 +30,13 @@ public class LevelLoader : MonoBehaviour
         Debug.Log($"Se encontraron {_totalLevels} niveles.");
 
         string levelname = _level + _counter.ToString();
+        EventManager.Instance.OnGameFinished += SaveLevel;
         LoadLevel(levelname); // Cargamos el nivel
     }
 
     void LoadLevel(string fileName)
     {
+        //-----------GENERATE BLOCKS----------
         // Limpiar bloques anteriores por seguridad
         foreach (Transform child in transform)
         {
@@ -82,9 +77,9 @@ public class LevelLoader : MonoBehaviour
 
                     GameObject block = Instantiate(blockPrefabs[blockType], pos, Quaternion.identity, transform);
 
-                    BlockController ctrl = block.GetComponent<BlockController>();
+                    /*BlockController ctrl = block.GetComponent<BlockController>();
                     if (ctrl != null)
-                        ctrl.OnBlockDestroyed += HandleBlockDestroyed;
+                        //ctrl.OnBlockDestroyed += HandleBlockDestroyed;*/
 
                     _remainingBlocks++;
                 }
@@ -95,7 +90,15 @@ public class LevelLoader : MonoBehaviour
             }
         }
 
+        // Se suscribe al evento de destruccion de bloque, para detectar si se ha roto un bloque
+        EventManager.Instance.OnBlockDestroyed += HandleBlockDestroyed;
+
         Debug.Log($"Nivel {fileName} cargado con {_remainingBlocks} bloques.");
+        //-----------GENERATE BLOCKS----------
+
+        //-----------POWER UPS----------
+        PowerUpManager.Instance.ResetPowerUps();
+        //-----------POWER UPS----------
     }
 
     void HandleBlockDestroyed()
@@ -112,6 +115,11 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
+    private void SaveLevel()
+    {
+        GameManager.Instance.SetLevel(_counter);
+    }
+
     void LoadNextLevel()
     {
         Debug.Log($"Counter: {_counter}");
@@ -125,10 +133,17 @@ public class LevelLoader : MonoBehaviour
         }
         string levelname = _level + _counter.ToString();
 
-        //TODO: CREAR UN EVENTO PARA QUE SE SUSCRIBA LOS ELEMENTOS QUE TIENEN QUE REACCIONAR AL COMPLETAR UN NIVEL O PERDER
-        _player.ResetToInitialPosition();// Reiniciamos posicion del player
-        _ball.ResetBall();// Reiniciamos posicion de la bola
+        // Llamamos al evento de nivel terminado.
+        EventManager.Instance.InvokeLevelFinished();
+        
 
         LoadLevel( levelname );
+    }
+
+    // Nos desuscribimos del evento para evitar errores
+    private void OnDestroy()
+    {
+        EventManager.Instance.OnBlockDestroyed -= HandleBlockDestroyed;
+        EventManager.Instance.OnGameFinished -= SaveLevel;
     }
 }

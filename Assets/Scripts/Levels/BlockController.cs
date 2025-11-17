@@ -6,15 +6,12 @@ public class BlockController : MonoBehaviour
     [SerializeField]private BlockData data;
     private int _hitsToBreak;
     private int _points;
-    private SpriteRenderer spriteRenderer;
-
-    public event Action OnBlockDestroyed;
-    // TODO: CREAR UN MANAGER DE EVENTOS SI DA TIEMPO
+    private SpriteRenderer _spriteRenderer;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = data.initialSprite;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.sprite = data.initialSprite;
 
         _hitsToBreak = data.Hits;
         _points = data.Points;
@@ -25,15 +22,20 @@ public class BlockController : MonoBehaviour
         //Para cambiar el sprite cuando le quede 1 golpe para romperse
         if (_hitsToBreak - 1 == 0)
         {
-            spriteRenderer.sprite = data.brokeSprite;
+            _spriteRenderer.sprite = data.brokeSprite;
         }
 
         if (_hitsToBreak <= 0)
         {
-            //TODO: EVENTMANAGER
-            OnBlockDestroyed?.Invoke();
+           
+            // Invoco el evento de destruccion de bloque
+            EventManager.Instance.InvokeBlockDestroyed();
+            // Generamos un power up
+            // TODO: alguna manera para no tener que estar llamando este metodo cuando se hayan generado el numero maximo de powerups del nivel
+            // Podria suscribirme desde el POwerUpManager pero necesito la posicion del bloque para instanciar el prefab
+            PowerUpManager.Instance.GeneratePowerUp(this.transform);
             GameManager.Instance.AddPoints(_points);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 

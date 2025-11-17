@@ -11,6 +11,8 @@ public class PowerUpExpandPaddle : PowerUp
     }
     public override void ApplyEffect()
     {
+        // Hay un problemilla con esto y que si la pala coger el power up con la bola, la bola crece tambien
+        Debug.Log("Power Up ExpandPaddle");
         _player.transform.localScale = new Vector3(
             _player.transform.localScale.x * scaleMultiplier,
             _player.transform.localScale.y,

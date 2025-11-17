@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     {
         _initialPosition = transform.position;
         CalculateLimits();
+        EventManager.Instance.OnLevelFinished += ResetToInitialPosition;// Nos suscribimos al evento de nivel finalizado
     }
 
     // Update is called once per frame
@@ -60,7 +61,13 @@ public class Player : MonoBehaviour
             if (powerUp != null)
             {
                 powerUp.ApplyEffect();
+                Destroy(collision.gameObject);
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.OnLevelFinished -= ResetToInitialPosition;// Nos desuscribimos al evento de nivel finalizado
     }
 }

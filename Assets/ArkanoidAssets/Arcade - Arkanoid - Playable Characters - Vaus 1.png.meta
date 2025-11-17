@@ -95,7 +95,1078 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 92
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf57b6ad8668d614aaa28b9efdf25d0b
+      internalID: 68484882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_1
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 92
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36fd73316cccc1044ad300c1deeabec3
+      internalID: 657664312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_2
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 92
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 529f290e0572bf14694b342bf5514c97
+      internalID: 739183792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_3
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 16
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8344f11629c36ce4c9787e2003f13cbf
+      internalID: 1692533750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_6
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 17
+        width: 37
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c21f6ea3417d4042a13e4ee74c8f1f5
+      internalID: -1456760696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_7
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 17
+        width: 42
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f3d0ce37c7016c4d9dd1a718d60d6f4
+      internalID: -1127706554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_10
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 8
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7890779a61cbd824c8e305e1f46c15c0
+      internalID: -1583789970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_13
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 0
+        width: 37
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 568ed18b49afadc47b6e8cfbd9865be0
+      internalID: -209314477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_15
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 0
+        width: 42
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e384af70d57e9f543b828aa073acf547
+      internalID: 498896299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_16
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 17
+        width: 44
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 118adfb1bd3e8b74aae53f7842a43714
+      internalID: 1122844464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 84
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3a257563e01e094aa51c81a9437c837
+      internalID: -1922102298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 76
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caaa68d47a6afef4f8ad4a217c4fe072
+      internalID: -1875817001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 68
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be584768f056a5c418e07a988f4479eb
+      internalID: -1530403691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28c27bc91f6f0b84cb1097dab81d4f68
+      internalID: 1725335612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 56
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18682aa36da4fc3438743bcf9f05e680
+      internalID: -33205355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_22
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 52
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70c60fad924db864a89d28fce544de02
+      internalID: -1367603810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_23
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 92
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed223a69bb38707488ef09ea2ffca759
+      internalID: 1801415919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_24
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 84
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff1a748cd081eb94a98a8092ba9f26fa
+      internalID: 858041447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_25
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 76
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a55a3d2a0d23e904fbcd91272d7c412d
+      internalID: 1074746611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_26
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 68
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b023121bac7e1142af6e0ee2e002ca6
+      internalID: 1661834926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_27
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 60
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37bdaf91a8d4d86499a3486fe51cac32
+      internalID: -2013722370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_28
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 52
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e757e3def4b87c742841875eb18751a6
+      internalID: 864299440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_29
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 92
+        width: 48
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20d450169d83db84989044efbaf4a1bf
+      internalID: -145064003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_30
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 84
+        width: 48
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 297f765479da5154b9b829bfd3cfe61a
+      internalID: -1663766553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_31
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 76
+        width: 48
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7ce4890498647a49b29d45e975e2132
+      internalID: -1064383058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_32
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 68
+        width: 48
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca26b83e39b01b498b50d4cfdf5d7fe
+      internalID: -392339214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_33
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 60
+        width: 48
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b807ad21fcdc87d49aaf6eefa474577f
+      internalID: 1817279263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_34
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 52
+        width: 48
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9254491327135e042b47a8ee0f475883
+      internalID: 1243827077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_35
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 84
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56e4ad090bdc50548914d0f31edcce7e
+      internalID: -539647904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_36
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 76
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89ed7bab9ec132b4f8283012411006e9
+      internalID: -443937026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_37
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 68
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ebc4990b79220349a04713fa42798f1
+      internalID: 607194933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_38
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 60
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf6d240810c3b4d409a877b80aff3d1c
+      internalID: 394236165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_39
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 52
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08b27930c3202324a8aadd856ea968b0
+      internalID: 685287336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_40
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 44
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d255aa6a81c33549ac8ac615552b22c
+      internalID: -1022707296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_41
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 36
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f515da2d2b8295b43bb2395b4f4824a4
+      internalID: 572080178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_42
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 28
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d8aadb100972824b991a60152276c93
+      internalID: 1506815978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_43
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 84
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f7b3b659660e924ba10078f8427854b
+      internalID: -744921749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_44
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 76
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01fd0519b5544dc41b59a2f7f0018224
+      internalID: -777508823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_45
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 68
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edf1d8fb4d735924192da3dec36920e5
+      internalID: -342186237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_46
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 60
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2af6000de7d5cd048bb7bdddd53580b8
+      internalID: -1230915583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_47
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 52
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7837f18b52f5e1e4481994dac83f6a10
+      internalID: -1336556810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_48
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 41
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb4638e006253e34397e9e10861a0e12
+      internalID: 1446355019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_49
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 33
+        width: 16
+        height: 3
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63824186b09c52e448a8739e233acdb4
+      internalID: 2046630147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_50
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 92
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa3d0989ec4ff047b92b71850614e81
+      internalID: -2127252083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_51
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 84
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e5444cbda24b2e429f6b7b172accfef
+      internalID: 599698961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_52
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 76
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79e9be69fc766d94095bea8c2e1c3ccc
+      internalID: 934587094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_4
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29284c2ccce4c6547966741873aa6e33
+      internalID: 1833083154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_5
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 8
+        width: 37
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 394216f6354266b43a2df3185c1ec32e
+      internalID: -1373824050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_8
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 8
+        width: 42
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f130c0d1ac7a038468b03ba6829a5bd7
+      internalID: 1280883343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_9
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 8
+        width: 44
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0c8c3a49f5b7c04a93909676f86df09
+      internalID: -1675577484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - Arkanoid - Playable Characters - Vaus 1_11
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 0
+        width: 44
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c69df052ddc6d1848bcc24306105e1e4
+      internalID: -708492921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +1177,60 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Arcade - Arkanoid - Playable Characters - Vaus 1_0: 68484882
+      Arcade - Arkanoid - Playable Characters - Vaus 1_1: 657664312
+      Arcade - Arkanoid - Playable Characters - Vaus 1_10: -1583789970
+      Arcade - Arkanoid - Playable Characters - Vaus 1_11: -708492921
+      Arcade - Arkanoid - Playable Characters - Vaus 1_12: 1272223895
+      Arcade - Arkanoid - Playable Characters - Vaus 1_13: -209314477
+      Arcade - Arkanoid - Playable Characters - Vaus 1_14: -889553874
+      Arcade - Arkanoid - Playable Characters - Vaus 1_15: 498896299
+      Arcade - Arkanoid - Playable Characters - Vaus 1_16: 1122844464
+      Arcade - Arkanoid - Playable Characters - Vaus 1_17: -1922102298
+      Arcade - Arkanoid - Playable Characters - Vaus 1_18: -1875817001
+      Arcade - Arkanoid - Playable Characters - Vaus 1_19: -1530403691
+      Arcade - Arkanoid - Playable Characters - Vaus 1_2: 739183792
+      Arcade - Arkanoid - Playable Characters - Vaus 1_20: 1725335612
+      Arcade - Arkanoid - Playable Characters - Vaus 1_21: -33205355
+      Arcade - Arkanoid - Playable Characters - Vaus 1_22: -1367603810
+      Arcade - Arkanoid - Playable Characters - Vaus 1_23: 1801415919
+      Arcade - Arkanoid - Playable Characters - Vaus 1_24: 858041447
+      Arcade - Arkanoid - Playable Characters - Vaus 1_25: 1074746611
+      Arcade - Arkanoid - Playable Characters - Vaus 1_26: 1661834926
+      Arcade - Arkanoid - Playable Characters - Vaus 1_27: -2013722370
+      Arcade - Arkanoid - Playable Characters - Vaus 1_28: 864299440
+      Arcade - Arkanoid - Playable Characters - Vaus 1_29: -145064003
+      Arcade - Arkanoid - Playable Characters - Vaus 1_3: 1692533750
+      Arcade - Arkanoid - Playable Characters - Vaus 1_30: -1663766553
+      Arcade - Arkanoid - Playable Characters - Vaus 1_31: -1064383058
+      Arcade - Arkanoid - Playable Characters - Vaus 1_32: -392339214
+      Arcade - Arkanoid - Playable Characters - Vaus 1_33: 1817279263
+      Arcade - Arkanoid - Playable Characters - Vaus 1_34: 1243827077
+      Arcade - Arkanoid - Playable Characters - Vaus 1_35: -539647904
+      Arcade - Arkanoid - Playable Characters - Vaus 1_36: -443937026
+      Arcade - Arkanoid - Playable Characters - Vaus 1_37: 607194933
+      Arcade - Arkanoid - Playable Characters - Vaus 1_38: 394236165
+      Arcade - Arkanoid - Playable Characters - Vaus 1_39: 685287336
+      Arcade - Arkanoid - Playable Characters - Vaus 1_4: 1833083154
+      Arcade - Arkanoid - Playable Characters - Vaus 1_40: -1022707296
+      Arcade - Arkanoid - Playable Characters - Vaus 1_41: 572080178
+      Arcade - Arkanoid - Playable Characters - Vaus 1_42: 1506815978
+      Arcade - Arkanoid - Playable Characters - Vaus 1_43: -744921749
+      Arcade - Arkanoid - Playable Characters - Vaus 1_44: -777508823
+      Arcade - Arkanoid - Playable Characters - Vaus 1_45: -342186237
+      Arcade - Arkanoid - Playable Characters - Vaus 1_46: -1230915583
+      Arcade - Arkanoid - Playable Characters - Vaus 1_47: -1336556810
+      Arcade - Arkanoid - Playable Characters - Vaus 1_48: 1446355019
+      Arcade - Arkanoid - Playable Characters - Vaus 1_49: 2046630147
+      Arcade - Arkanoid - Playable Characters - Vaus 1_5: -1373824050
+      Arcade - Arkanoid - Playable Characters - Vaus 1_50: -2127252083
+      Arcade - Arkanoid - Playable Characters - Vaus 1_51: 599698961
+      Arcade - Arkanoid - Playable Characters - Vaus 1_52: 934587094
+      Arcade - Arkanoid - Playable Characters - Vaus 1_6: -1456760696
+      Arcade - Arkanoid - Playable Characters - Vaus 1_7: -1127706554
+      Arcade - Arkanoid - Playable Characters - Vaus 1_8: 1280883343
+      Arcade - Arkanoid - Playable Characters - Vaus 1_9: -1675577484
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -21,7 +21,8 @@ public class Ball : MonoBehaviour
         //_launchParent = GameObject.FindGameObjectWithTag("Player");
         ResetBall();// Reseteamos la posición de la bola a la de la Pala
         transform.SetParent(_launchParent.transform, true);// Convertimos a la Pala en padre de la bola para que siga su movimiento
-        
+
+        EventManager.Instance.OnLevelFinished += ResetBall;// Nos suscribimos el evento de nivel finalizado
     }
 
     // Update is called once per frame
@@ -121,5 +122,9 @@ public class Ball : MonoBehaviour
             }
         }
         
+    }
+    private void OnDestroy()
+    {
+        EventManager.Instance.OnLevelFinished -= ResetBall;// Nos desuscribimos al evento de nivel finalizado
     }
 }
