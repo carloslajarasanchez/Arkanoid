@@ -9,23 +9,34 @@ public class Player : MonoBehaviour
     [SerializeField]private GameObject _wallRight;
     [SerializeField]private GameObject _wallLeft;
 
+    [Header("Sound Clips")]
+    [SerializeField] private AudioClip _respawnClip;
+
+    private Animator _playerAnimator;
     private float _minLimit;
     private float _maxLimit;
     private Vector2 _initialPosition;
+    private bool _canMove;
  
 
     // Start is called before the first frame update
     void Start()
     {
         _initialPosition = transform.position;
+        _playerAnimator = GetComponent<Animator>();
         CalculateLimits();
         EventManager.Instance.OnLevelFinished += ResetToInitialPosition;// Nos suscribimos al evento de nivel finalizado
+        EventManager.Instance.OnBallLosted += DestroyPlayerAnimation;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (_canMove)
+        {
+            Move();
+        }
+        
     }
 
     private void Move()
@@ -66,8 +77,34 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Este metodo esta suscrito al evento ed OnBallLosted para que se ejecute la animacion de destruir al player
+    private void DestroyPlayerAnimation()
+    {
+        _canMove = false;
+        _playerAnimator.SetTrigger("OnLostBall");
+    }
+
+    // Este metodo se llama desde un animation event para saber cuando ha terminado la animacion de respawn del player
+    public void CanMove()
+    {
+        _canMove = true;
+        UIManager.Instance.HideReadyScreen();// Ocultamos la UI de Ready
+    }
+    // Este metodo se llama desde un animation event cuando empieza la animacion de respawn del player
+    public void PlayRespawnSound()
+    {
+        AudioManager.Instance.PlaySound(_respawnClip);
+    }
+
+    //TODO: Arreglar que la nave vuelve a sonar una vez se termina la partida ya que se ejecuta la animacion de destruirse y luego pasa a la de respawn invocando el sonido
+    private void UnsubscribeLostBall()
+    {
+        EventManager.Instance.OnBallLosted -= DestroyPlayerAnimation;
+    }
+
     private void OnDestroy()
     {
         EventManager.Instance.OnLevelFinished -= ResetToInitialPosition;// Nos desuscribimos al evento de nivel finalizado
+        EventManager.Instance.OnBallLosted -= DestroyPlayerAnimation;
     }
 }

@@ -14,6 +14,11 @@ public class Ball : MonoBehaviour
     [Header("Dependencias")]
     [SerializeField]private GameObject _launchParent;// Referencia a la pala
 
+    [Header("Sonidos")]
+    [SerializeField] private AudioClip _collisionSound;
+    [SerializeField] private AudioClip _playerSound;
+    [SerializeField] private AudioClip _loseBallSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +57,8 @@ public class Ball : MonoBehaviour
         {
             
             GameManager.Instance.RestLifes(1);// Llamamos al GameManager para restar vidas del jugador
+            AudioManager.Instance.PlaySound(_loseBallSound);
+            EventManager.Instance.InvokeBallLosted();// Activamos el evento de bola perdida
             ResetBall();// Reiniciamos la posicion del jugador
         }
        VelocityFix();
@@ -82,9 +89,16 @@ public class Ball : MonoBehaviour
 
             // Aplicar nueva velocidad
             _rb2D.velocity = newDirection * velocity;
+
+            AudioManager.Instance.PlaySound(_playerSound);
+        }
+        else
+        {
+            AudioManager.Instance.PlaySound(_collisionSound);// Esta en else para evitar que se ejecute el sonido de player y las demas colisiones juntos
         }
 
-        VelocityFix(); // Corrección de rebotes verticales/horizontales
+            VelocityFix(); // Corrección de rebotes verticales/horizontales
+        
     }
 
 

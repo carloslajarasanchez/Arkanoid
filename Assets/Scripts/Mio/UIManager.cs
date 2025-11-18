@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [Header("Canvas Juego")]
+    [Header("Canvas Game")]
     [SerializeField] private TextMeshProUGUI _textPoints;
     [SerializeField] private TextMeshProUGUI _textLifes;
     [SerializeField] private TextMeshProUGUI _textTimer;
@@ -18,6 +18,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup _gameOverScreen;
     [SerializeField] private float _fadeDuration = .5f;
     [SerializeField] private TextMeshProUGUI _textRanking;
+
+    [Header("Canvas Ready")]
+    [SerializeField] private CanvasGroup _readyScreen;
+    [SerializeField] private TextMeshProUGUI _textRound;
 
     private int _currentPoints = 0;     // Valor mostrado actualmente
     private Coroutine _pointsCoroutine; // Para evitar solapamiento de animaciones
@@ -34,6 +38,11 @@ public class UIManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this);
         }
+    }
+
+    private void Start()
+    {
+        EventManager.Instance.OnBallLosted += ShowReadyScreen;// Nos suscribimos el evento de perder la bola y mostramos la UI de Ready
     }
 
     /// <summary>
@@ -100,7 +109,7 @@ public class UIManager : MonoBehaviour
     private string FormatTime(float time)
     {
        int minutes = (int)(time / 60f);
-       int seconds = (int)(time - minutes / 60f);
+       int seconds = (int)(time - minutes * 60f);
        int cents = (int)((time - (int)time) * 100f);
 
         return string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, cents);
@@ -119,40 +128,60 @@ public class UIManager : MonoBehaviour
 
     public void ShowGameOverScreen()
     {
-        StartFade(1);
+        StartGameOverFade(1);
         PrintRanking();
     }
 
     public void HideGameOverScreen()
     {
-        StartFade(1);
+        StartGameOverFade(0);
     }
 
-    private void StartFade(float targetAlpha)
+    public void ShowReadyScreen()
     {
-        StartCoroutine(FadeCoroutine(targetAlpha));
+        StartReadyFade(1);
+        _textRound.text = $"Round {GameManager.Instance.GetLevel().ToString()}";
     }
 
-    private IEnumerator FadeCoroutine(float target)
+    public void HideReadyScreen()
     {
-        float start = _gameOverScreen.alpha;
+        StartReadyFade(0);
+    }
+
+    private void StartGameOverFade(float targetAlpha)
+    {
+        StartCoroutine(FadeCoroutine(targetAlpha, _gameOverScreen));
+    }
+    private void StartReadyFade(float targetAlpha)
+    {
+        StartCoroutine(FadeCoroutine(targetAlpha, _readyScreen));
+    }
+
+    private IEnumerator FadeCoroutine(float target, CanvasGroup canvas)
+    {
+        float start = canvas.alpha;
         float time = 0;
 
         while (time < _fadeDuration)
         {
             time += Time.deltaTime;
-            _gameOverScreen.alpha = Mathf.Lerp(start, target, time / _fadeDuration);
+            canvas.alpha = Mathf.Lerp(start, target, time / _fadeDuration);
 
             // Evita interaciones cuando no esta visible
-            _gameOverScreen.interactable = target > 0.5f;
-            _gameOverScreen.blocksRaycasts = target > 0.5f;
+            canvas.interactable = target > 0.5f;
+            canvas.blocksRaycasts = target > 0.5f;
 
             yield return null;
         }
 
-        _gameOverScreen.alpha = target;
+        canvas.alpha = target;
         // Vuelven las interaciones cuando esta visible
-        _gameOverScreen.interactable = target > 0.5f;
-        _gameOverScreen.blocksRaycasts = target > 0.5f;
+        canvas.interactable = target > 0.5f;
+        canvas.blocksRaycasts = target > 0.5f;
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.OnBallLosted -= ShowReadyScreen;
     }
 }

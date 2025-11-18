@@ -53,7 +53,7 @@ public class EventManager : MonoBehaviour
     /// </summary>
     public void InvokeBallLosted()
     {
-        OnPowerUpObtained?.Invoke();
+        OnBallLosted?.Invoke();
         //TODO: Implemetar que cuando se pierda la bola los powerUps se desactiven
         //problema la bola multiple
     }

@@ -5,8 +5,9 @@ public class PowerUpExpandPaddle : PowerUp
     [SerializeField] private float scaleMultiplier = 1.5f;
     private GameObject _player;
     
-    private void Start()
+    protected new void Start()
     {
+        base.Start(); // Esto asegura que se suscriba al evento
         _player = FindAnyObjectByType<Player>().gameObject;
     }
     public override void ApplyEffect()

@@ -79,12 +79,12 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {       
         // De momento resetea a la escena de inicio
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void ExitMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     /// <summary>
@@ -102,5 +102,13 @@ public class GameManager : MonoBehaviour
     public void SetLevel(int level)
     {
         this._level = level;
+    }
+    /// <summary>
+    /// Metodo para dar el nivel en el que estamos
+    /// </summary>
+    /// <param name="level">Nivel al que ha llegado el jugador</param>
+    public int GetLevel()
+    {
+        return this._level;
     }
 }

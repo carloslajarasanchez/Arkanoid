@@ -4,10 +4,10 @@ using System.Linq;
 
 public class LevelLoader : MonoBehaviour
 {
-    [Header("Prefabs de bloques por tipo (índice = número en JSON)")]
+    [Header("Block Prefabs of type (índice = número en JSON)")]
     [SerializeField] private GameObject[] blockPrefabs;// Prefabs de los bloques a instanciar
 
-    [Header("Configuración del nivel")]
+    [Header("Level configuration")]
     [SerializeField]private float blockWidth = 1f;// Ancho de los bloques
     [SerializeField]private float blockHeight = 0.5f;// Alto de los bloques
     public Vector2 startPos = new Vector2(-4f, 4f);// Posicion inicial donde se instancian los bloques
@@ -29,8 +29,12 @@ public class LevelLoader : MonoBehaviour
 
         Debug.Log($"Se encontraron {_totalLevels} niveles.");
 
+        //Actulizamos el nivel en el que estamos
+        SaveLevel();
+
         string levelname = _level + _counter.ToString();
-        EventManager.Instance.OnGameFinished += SaveLevel;
+        EventManager.Instance.OnGameFinished += SaveLevel;// Para mandar el nivel maximo al que hemos llegado
+        EventManager.Instance.OnBallLosted += SaveLevel;// Para detectar en que nivel estamos y actualizarlo en la UI
         LoadLevel(levelname); // Cargamos el nivel
     }
 
@@ -145,5 +149,6 @@ public class LevelLoader : MonoBehaviour
     {
         EventManager.Instance.OnBlockDestroyed -= HandleBlockDestroyed;
         EventManager.Instance.OnGameFinished -= SaveLevel;
+        EventManager.Instance.OnBallLosted -= SaveLevel;
     }
 }
