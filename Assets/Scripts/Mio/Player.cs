@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
         _playerAnimator = GetComponent<Animator>();
         CalculateLimits();
         EventManager.Instance.OnLevelFinished += ResetToInitialPosition;// Nos suscribimos al evento de nivel finalizado
+        EventManager.Instance.OnLevelFinished += LevelCompleteRespawnPlayer;// Nos suscribimos al evento de nivel finalizado
         EventManager.Instance.OnBallLosted += DestroyPlayerAnimation;
     }
 
@@ -81,7 +82,7 @@ public class Player : MonoBehaviour
     private void DestroyPlayerAnimation()
     {
         _canMove = false;
-        _playerAnimator.SetTrigger("OnLostBall");
+        _playerAnimator.SetTrigger("TriggerLostBall");
     }
 
     // Este metodo se llama desde un animation event para saber cuando ha terminado la animacion de respawn del player
@@ -96,6 +97,11 @@ public class Player : MonoBehaviour
         AudioManager.Instance.PlaySound(_respawnClip);
     }
 
+    private void LevelCompleteRespawnPlayer()
+    {
+        _playerAnimator.SetTrigger("TriggerLevelFinished");
+    }
+
     //TODO: Arreglar que la nave vuelve a sonar una vez se termina la partida ya que se ejecuta la animacion de destruirse y luego pasa a la de respawn invocando el sonido
     private void UnsubscribeLostBall()
     {
@@ -106,5 +112,6 @@ public class Player : MonoBehaviour
     {
         EventManager.Instance.OnLevelFinished -= ResetToInitialPosition;// Nos desuscribimos al evento de nivel finalizado
         EventManager.Instance.OnBallLosted -= DestroyPlayerAnimation;
+        EventManager.Instance.OnLevelFinished -= LevelCompleteRespawnPlayer;// Nos suscribimos al evento de nivel finalizado
     }
 }

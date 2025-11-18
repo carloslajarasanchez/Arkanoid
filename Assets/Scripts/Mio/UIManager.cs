@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    //PROBLEMA GORDO: Cuando se reinicia el nivel el UIManager sigue teniendo de referencia los gameobject de antes de cargar la escena al cargarla intenta acceder a estos y no existen
+    //Posible solucion: en vez de cargar la escena con LoadScene() reiniciamos el nivel a 1 del levelLoader y cargamos el nivel, el problema es que tendriamos que reiniciar todas las variables de tiempo, vidas y puntuacion
     public static UIManager Instance;
 
     [Header("Canvas Game")]
@@ -27,22 +29,15 @@ public class UIManager : MonoBehaviour
     private Coroutine _pointsCoroutine; // Para evitar solapamiento de animaciones
 
     // Start is called before the first frame update
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-        }
+   void Awake()
+    {      
+            Instance = this;       
     }
 
     private void Start()
     {
         EventManager.Instance.OnBallLosted += ShowReadyScreen;// Nos suscribimos el evento de perder la bola y mostramos la UI de Ready
+        EventManager.Instance.OnLevelFinished += ShowReadyScreen;// Nos suscribimos el evento de terminar el nivel y mostramos UI de Ready
     }
 
     /// <summary>
