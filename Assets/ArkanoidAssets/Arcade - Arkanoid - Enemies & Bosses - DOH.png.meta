@@ -105,7 +105,7 @@ TextureImporter:
         width: 88
         height: 135
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -126,7 +126,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,7 +147,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,7 +168,7 @@ TextureImporter:
         width: 63
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,7 +189,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,10 +205,10 @@ TextureImporter:
       name: Arcade - Arkanoid - Enemies & Bosses - DOH_5
       rect:
         serializedVersion: 2
-        x: 257
-        y: 755
-        width: 5
-        height: 12
+        x: 0
+        y: 192
+        width: 62
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,10 +226,10 @@ TextureImporter:
       name: Arcade - Arkanoid - Enemies & Bosses - DOH_6
       rect:
         serializedVersion: 2
-        x: 264
-        y: 755
-        width: 5
-        height: 12
+        x: 65
+        y: 192
+        width: 62
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,10 +247,10 @@ TextureImporter:
       name: Arcade - Arkanoid - Enemies & Bosses - DOH_7
       rect:
         serializedVersion: 2
-        x: 271
-        y: 755
-        width: 5
-        height: 12
+        x: 128
+        y: 192
+        width: 62
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,10 +268,10 @@ TextureImporter:
       name: Arcade - Arkanoid - Enemies & Bosses - DOH_8
       rect:
         serializedVersion: 2
-        x: 278
-        y: 755
-        width: 5
-        height: 12
+        x: 193
+        y: 192
+        width: 62
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,10 +289,10 @@ TextureImporter:
       name: Arcade - Arkanoid - Enemies & Bosses - DOH_9
       rect:
         serializedVersion: 2
-        x: 285
-        y: 755
-        width: 5
-        height: 12
+        x: 0
+        y: 96
+        width: 62
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,10 +310,10 @@ TextureImporter:
       name: Arcade - Arkanoid - Enemies & Bosses - DOH_10
       rect:
         serializedVersion: 2
-        x: 292
-        y: 755
-        width: 5
-        height: 12
+        x: 65
+        y: 96
+        width: 62
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,10 +331,10 @@ TextureImporter:
       name: Arcade - Arkanoid - Enemies & Bosses - DOH_11
       rect:
         serializedVersion: 2
-        x: 257
-        y: 659
-        width: 5
-        height: 12
+        x: 128
+        y: 96
+        width: 62
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,10 +352,10 @@ TextureImporter:
       name: Arcade - Arkanoid - Enemies & Bosses - DOH_12
       rect:
         serializedVersion: 2
-        x: 264
-        y: 659
-        width: 5
-        height: 12
+        x: 193
+        y: 96
+        width: 62
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,10 +373,10 @@ TextureImporter:
       name: Arcade - Arkanoid - Enemies & Bosses - DOH_13
       rect:
         serializedVersion: 2
-        x: 271
-        y: 659
-        width: 5
-        height: 12
+        x: 0
+        y: 0
+        width: 62
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,10 +394,10 @@ TextureImporter:
       name: Arcade - Arkanoid - Enemies & Bosses - DOH_14
       rect:
         serializedVersion: 2
-        x: 260
-        y: 563
-        width: 9
-        height: 12
+        x: 65
+        y: 0
+        width: 62
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -412,153 +412,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Arcade - Arkanoid - Enemies & Bosses - DOH_15
-      rect:
-        serializedVersion: 2
-        x: 273
-        y: 563
-        width: 10
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8179dc8f0a9138c469b402eabf1d0448
-      internalID: -543103059
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Arcade - Arkanoid - Enemies & Bosses - DOH_16
-      rect:
-        serializedVersion: 2
-        x: 285
-        y: 563
-        width: 5
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e835f291e9eb1b845b02ad60c3c54a20
-      internalID: -1132676187
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Arcade - Arkanoid - Enemies & Bosses - DOH_17
-      rect:
-        serializedVersion: 2
-        x: 257
-        y: 275
-        width: 5
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e9a783d3222cc747bfb1d1be989841e
-      internalID: 779841382
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Arcade - Arkanoid - Enemies & Bosses - DOH_18
-      rect:
-        serializedVersion: 2
-        x: 264
-        y: 275
-        width: 5
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f8127be2d5c8c0e49bd18bbeb13f69bc
-      internalID: 133864744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Arcade - Arkanoid - Enemies & Bosses - DOH_19
-      rect:
-        serializedVersion: 2
-        x: 271
-        y: 275
-        width: 5
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 69d58bc0b1a10ff4ca62946d474dabc9
-      internalID: 1683327741
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Arcade - Arkanoid - Enemies & Bosses - DOH_20
-      rect:
-        serializedVersion: 2
-        x: 278
-        y: 275
-        width: 5
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f04510eb93267c74ebdbcccdf89fc58a
-      internalID: -1858300525
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Arcade - Arkanoid - Enemies & Bosses - DOH_21
-      rect:
-        serializedVersion: 2
-        x: 285
-        y: 275
-        width: 5
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 89c6bf4da44caea4cabd7d29c71a5d86
-      internalID: -1556011822
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Arcade - Arkanoid - Enemies & Bosses - DOH_22
       rect:
         serializedVersion: 2
@@ -567,7 +420,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -588,7 +441,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -609,7 +462,7 @@ TextureImporter:
         width: 63
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -630,7 +483,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -651,7 +504,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -672,7 +525,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -693,7 +546,7 @@ TextureImporter:
         width: 63
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -714,7 +567,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -735,7 +588,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -756,7 +609,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -777,7 +630,7 @@ TextureImporter:
         width: 63
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -798,7 +651,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -819,7 +672,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -840,7 +693,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -856,12 +709,12 @@ TextureImporter:
       name: Arcade - Arkanoid - Enemies & Bosses - DOH_36
       rect:
         serializedVersion: 2
-        x: 128
+        x: 129
         y: 288
-        width: 63
+        width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -882,7 +735,7 @@ TextureImporter:
         width: 62
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -937,6 +790,7 @@ TextureImporter:
       Arcade - Arkanoid - Enemies & Bosses - DOH_35: -1983266120
       Arcade - Arkanoid - Enemies & Bosses - DOH_36: 994496561
       Arcade - Arkanoid - Enemies & Bosses - DOH_37: -1218291468
+      Arcade - Arkanoid - Enemies & Bosses - DOH_38: -859946762
       Arcade - Arkanoid - Enemies & Bosses - DOH_4: 324714290
       Arcade - Arkanoid - Enemies & Bosses - DOH_5: -2146045360
       Arcade - Arkanoid - Enemies & Bosses - DOH_6: 18169782

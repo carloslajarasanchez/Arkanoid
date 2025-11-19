@@ -24,6 +24,7 @@ public abstract class PowerUp : MonoBehaviour
 
     // Cada power-up implementa su propio efecto
     public abstract void ApplyEffect();
+    public abstract void RevertEffect();
 
     // Este metodo destruye los powerUp al perder la bola
     private void DestroyPowerUp()

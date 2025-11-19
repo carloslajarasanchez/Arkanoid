@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,6 +26,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup _readyScreen;
     [SerializeField] private TextMeshProUGUI _textRound;
 
+    [Header("Tutorial")]
+    [SerializeField] private TextMeshProUGUI _textTutorial;
+
     private int _currentPoints = 0;     // Valor mostrado actualmente
     private Coroutine _pointsCoroutine; // Para evitar solapamiento de animaciones
 
@@ -38,6 +42,7 @@ public class UIManager : MonoBehaviour
     {
         EventManager.Instance.OnBallLosted += ShowReadyScreen;// Nos suscribimos el evento de perder la bola y mostramos la UI de Ready
         EventManager.Instance.OnLevelFinished += ShowReadyScreen;// Nos suscribimos el evento de terminar el nivel y mostramos UI de Ready
+        StartCoroutine(ShowTutorial());
     }
 
     /// <summary>
@@ -178,5 +183,14 @@ public class UIManager : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.Instance.OnBallLosted -= ShowReadyScreen;
+    }
+
+    private IEnumerator ShowTutorial()
+    {
+        yield return new WaitForSeconds(1.5f);
+        _textTutorial.text = "Press Space to launch the ball";
+
+        yield return new WaitForSeconds(1.5f);
+        _textTutorial.text = "";
     }
 }

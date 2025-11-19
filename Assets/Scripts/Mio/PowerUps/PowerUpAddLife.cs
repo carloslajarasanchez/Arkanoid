@@ -8,4 +8,9 @@ public class PowerUpAddLife : PowerUp
     {
         GameManager.Instance.AddLifes(1);
     }
+
+    public override void RevertEffect()
+    {
+        
+    }
 }

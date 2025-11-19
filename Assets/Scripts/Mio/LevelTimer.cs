@@ -11,11 +11,13 @@ public class LevelTimer : MonoBehaviour
     private void Start()
     {
         EventManager.Instance.OnGameFinished += SaveTime;
+        StartCoroutine(UpdateTime());
+
     }
     // Update is called once per frame
     void Update()
     {
-        UpdateTimer();
+        //UpdateTimer();
     }
 
     private void UpdateTimer() 
@@ -33,5 +35,15 @@ public class LevelTimer : MonoBehaviour
     {
         EventManager.Instance.OnGameFinished -= SaveTime;
     }
-    //TODO: metodo para cuando termine el nivel o pierdas el juego mande los datos al gameManager de tiempos
+    
+    private IEnumerator UpdateTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(.01f);
+            _timeElapsed+=.01f;
+            UIManager.Instance.UpdateTimer(_timeElapsed);
+        }  
+    }
+
 }

@@ -22,5 +22,9 @@ public class PowerUpExpandPaddle : PowerUp
 
         _player.GetComponent<Player>().CalculateLimits();
     }
+    public override void RevertEffect()
+    {
+        
+    }
 }
 

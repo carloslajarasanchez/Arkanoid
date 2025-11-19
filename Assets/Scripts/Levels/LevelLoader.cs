@@ -126,9 +126,11 @@ public class LevelLoader : MonoBehaviour
 
     void LoadNextLevel()
     {
-        Debug.Log($"Counter: {_counter}");
+        
         _counter++;
-        if (_counter > _totalLevels)
+        Debug.Log($"Counter: {_counter}");
+        Debug.Log($"TotalLevels: {_totalLevels}");
+        if (_counter >= _totalLevels)
         {
             // TODO: NO FUNCIONA
             Debug.Log("¡Has completado todos los niveles!");
