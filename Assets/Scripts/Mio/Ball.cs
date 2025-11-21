@@ -9,7 +9,7 @@ public class Ball : MonoBehaviour
 
     private Rigidbody2D _rb2D;// Rigidbody2D de la bola
     private bool _launched = false;// Variable para controlar si la bola se ha lanzado
-    private Vector2 _initialPosition;// Posicion inicial
+    private bool _restared = false;// Variable para controlar que la bola no se lance cuando se haya perdido
 
     [Header("Dependencias")]
     [SerializeField]private GameObject _launchParent;// Referencia a la pala
@@ -25,9 +25,11 @@ public class Ball : MonoBehaviour
         _rb2D = GetComponent<Rigidbody2D>();// Seteamos la variable Rigidbody de la bola para poder modificarla
         //_launchParent = GameObject.FindGameObjectWithTag("Player");
         ResetBall();// Reseteamos la posición de la bola a la de la Pala
-        transform.SetParent(_launchParent.transform, true);// Convertimos a la Pala en padre de la bola para que siga su movimiento
+        transform.SetParent(_launchParent.transform, false);// Convertimos a la Pala en padre de la bola para que siga su movimiento
 
         EventManager.Instance.OnLevelFinished += ResetBall;// Nos suscribimos el evento de nivel finalizado
+        EventManager.Instance.OnGameFinished += CanLauch;
+        EventManager.Instance.OnLevelRestarted += CanLauch;
     }
 
     // Update is called once per frame
@@ -39,7 +41,7 @@ public class Ball : MonoBehaviour
     // Metodo para lanzar la bola
     private void LaunchBall()
     {
-        if (!_launched)// Si no se ha lanzado todavia la bola
+        if (!_launched && !_restared)// Si no se ha lanzado todavia la bola
         {
             if (Input.GetKeyDown(KeyCode.Space))// Y se presiona espacio
             {
@@ -47,6 +49,7 @@ public class Ball : MonoBehaviour
                 _rb2D.velocity = _initialDirection.normalized * velocity;// Aplicamos a la bola una velocidad hacia la direccion inicial que decidimos
                 //_rb2D.AddForce(_initialDirection * velocity);// Aplicamos a la bola una fuerza hacia la direccion inicial que decidimos
                 _launched = true;// Para que a la bola no se le pueda volver a aplicar otra fuerza hasta que no se reinicie
+                EventManager.Instance.InvokeBallLaunched();
             }
         }
     }
@@ -59,7 +62,7 @@ public class Ball : MonoBehaviour
             GameManager.Instance.RestLifes(1);// Llamamos al GameManager para restar vidas del jugador
             AudioManager.Instance.PlaySound(_loseBallSound);
             EventManager.Instance.InvokeBallLosted();// Activamos el evento de bola perdida
-            ResetBall();// Reiniciamos la posicion del jugador
+            ResetBall();// Reiniciamos la posicion de la bola
         }
        VelocityFix();
     }
@@ -136,6 +139,12 @@ public class Ball : MonoBehaviour
             }
         }
         
+    }
+
+    private void CanLauch()
+    {
+
+        _restared = !_restared;
     }
     private void OnDestroy()
     {

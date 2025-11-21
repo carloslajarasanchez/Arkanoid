@@ -34,15 +34,24 @@ public class UIManager : MonoBehaviour
 
     // Start is called before the first frame update
    void Awake()
-    {      
-            Instance = this;       
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+           // DontDestroyOnLoad(this);
+        }
     }
 
     private void Start()
     {
         EventManager.Instance.OnBallLosted += ShowReadyScreen;// Nos suscribimos el evento de perder la bola y mostramos la UI de Ready
         EventManager.Instance.OnLevelFinished += ShowReadyScreen;// Nos suscribimos el evento de terminar el nivel y mostramos UI de Ready
-        StartCoroutine(ShowTutorial());
+        EventManager.Instance.OnBallLaunched += SkipTutorial;
+        StartCoroutine("ShowTutorial");
     }
 
     /// <summary>
@@ -192,5 +201,12 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
         _textTutorial.text = "";
+    }
+
+    private void SkipTutorial()
+    {
+        StopCoroutine("ShowTutorial");
+        _textTutorial.text = "";
+        EventManager.Instance.OnBallLaunched -= SkipTutorial;
     }
 }

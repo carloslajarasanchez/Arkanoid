@@ -6,12 +6,15 @@ using UnityEngine;
 public class LevelTimer : MonoBehaviour
 {
     private float _timeElapsed = 0;
-    private int minutes, seconds, cents;
 
     private void Start()
     {
         EventManager.Instance.OnGameFinished += SaveTime;
-        StartCoroutine(UpdateTime());
+        EventManager.Instance.OnLevelRestarted += RestartTime;
+        EventManager.Instance.OnBallLosted += StopTimer;
+        EventManager.Instance.OnLevelFinished += StopTimer;
+        EventManager.Instance.OnBallLaunched += StartTimer;
+        
 
     }
     // Update is called once per frame
@@ -20,11 +23,6 @@ public class LevelTimer : MonoBehaviour
         //UpdateTimer();
     }
 
-    private void UpdateTimer() 
-    {
-        _timeElapsed += Time.deltaTime;
-        UIManager.Instance.UpdateTimer(_timeElapsed);
-    } 
 
     private void SaveTime()
     {
@@ -44,6 +42,21 @@ public class LevelTimer : MonoBehaviour
             _timeElapsed+=.01f;
             UIManager.Instance.UpdateTimer(_timeElapsed);
         }  
+    }
+
+    private void RestartTime()
+    {
+        _timeElapsed = GameManager.Instance.GetTime();
+        UIManager.Instance.UpdateTimer(_timeElapsed);
+    }
+
+    private void StartTimer()
+    {
+        StartCoroutine("UpdateTime");
+    }
+    private void StopTimer()
+    {
+        StopCoroutine("UpdateTime");
     }
 
 }

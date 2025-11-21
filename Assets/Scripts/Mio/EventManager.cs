@@ -12,6 +12,8 @@ public class EventManager : MonoBehaviour
     public event Action OnPowerUpObtained;
     public event Action OnBallLosted;
     public event Action OnGameFinished;
+    public event Action OnLevelRestarted;
+    public event Action OnBallLaunched;
 
     private void Awake()
     {
@@ -22,7 +24,7 @@ public class EventManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(Instance);
+            //DontDestroyOnLoad(Instance);
         }
     }
 
@@ -54,8 +56,6 @@ public class EventManager : MonoBehaviour
     public void InvokeBallLosted()
     {
         OnBallLosted?.Invoke();
-        //TODO: Implemetar que cuando se pierda la bola los powerUps se desactiven
-        //problema la bola multiple
     }
     /// <summary>
     /// Evento para detectar cuando se termina la partida
@@ -63,7 +63,14 @@ public class EventManager : MonoBehaviour
     public void InvokeGameFinished()
     {
         OnGameFinished?.Invoke();
-        //TODO: Implemetar que cuando se pierda la bola los powerUps se desactiven
-        //problema la bola multiple
+    }
+    public void InvokeLevelRestarted()
+    {
+        OnLevelRestarted?.Invoke();
+    }
+
+    public void InvokeBallLaunched()
+    {
+        OnBallLaunched?.Invoke();
     }
 }

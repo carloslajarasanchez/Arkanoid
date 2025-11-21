@@ -72,13 +72,14 @@ public class Player : MonoBehaviour
             if(actualPowerUp != null)// Si hay un powerUp activo se aplica el metodo revertir powerUp
             {
                 actualPowerUp.RevertEffect();
+                //Destroy(actualPowerUp);
             }
 
             PowerUp powerUp = collision.gameObject.GetComponent<PowerUp>();// Guardamos el powerUp recogido
 
             if (powerUp != null)// Si no esta vacio
             {
-                actualPowerUp = powerUp;// Lo asignamos como powerUp actual
+                actualPowerUp = Instantiate(powerUp);// Lo asignamos como powerUp actual
                 powerUp.ApplyEffect();// Aplicamos su efecto
                 Destroy(collision.gameObject);// Destruimos el powerUp
             }
@@ -98,6 +99,7 @@ public class Player : MonoBehaviour
         _canMove = true;
         UIManager.Instance.HideReadyScreen();// Ocultamos la UI de Ready
     }
+
     // Este metodo se llama desde un animation event cuando empieza la animacion de respawn del player
     public void PlayRespawnSound()
     {

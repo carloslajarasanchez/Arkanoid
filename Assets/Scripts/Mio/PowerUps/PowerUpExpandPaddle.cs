@@ -4,6 +4,7 @@ public class PowerUpExpandPaddle : PowerUp
 {
     [SerializeField] private float scaleMultiplier = 1.5f;
     private GameObject _player;
+    private Vector3 _playerOriginalSize = new Vector3(2,.5f,1);
     
     protected new void Start()
     {
@@ -24,7 +25,8 @@ public class PowerUpExpandPaddle : PowerUp
     }
     public override void RevertEffect()
     {
-        
+        _player.transform.localScale = _playerOriginalSize;
+        _player.GetComponent<Player>().CalculateLimits();
     }
 }
 

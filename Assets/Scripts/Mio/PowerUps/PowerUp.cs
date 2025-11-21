@@ -7,6 +7,8 @@ public abstract class PowerUp : MonoBehaviour
     protected virtual void Start()
     {
         EventManager.Instance.OnBallLosted += DestroyPowerUp;// Nos suscribimos al evento de cuando perdemos una bola
+        EventManager.Instance.OnBallLosted += RevertEffect;// Nos suscribimos al evento de cuando perdemos una bola
+        EventManager.Instance.OnLevelFinished += DestroyPowerUp;
     }
     void Update()
     {
@@ -35,5 +37,7 @@ public abstract class PowerUp : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.Instance.OnBallLosted -= DestroyPowerUp;// Nos desuscribimos del evento
+        //EventManager.Instance.OnBallLosted -= RevertEffect;// Nos suscribimos al evento de cuando perdemos una bola
+        EventManager.Instance.OnLevelFinished -= DestroyPowerUp;
     }
 }

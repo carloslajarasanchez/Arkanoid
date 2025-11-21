@@ -34,7 +34,9 @@ public class LevelLoader : MonoBehaviour
 
         string levelname = _level + _counter.ToString();
         EventManager.Instance.OnGameFinished += SaveLevel;// Para mandar el nivel maximo al que hemos llegado
-        EventManager.Instance.OnBallLosted += SaveLevel;// Para detectar en que nivel estamos y actualizarlo en la UI
+        EventManager.Instance.OnBallLosted += SaveLevel;// Para detectar en que nivel estamos y actualizarlo en la UI   
+        EventManager.Instance.OnBlockDestroyed += HandleBlockDestroyed;// Se suscribe al evento de destruccion de bloque, para detectar si se ha roto un bloque
+        EventManager.Instance.OnLevelRestarted += RestartLevel;
         LoadLevel(levelname); // Cargamos el nivel
     }
 
@@ -94,28 +96,26 @@ public class LevelLoader : MonoBehaviour
             }
         }
 
-        // Se suscribe al evento de destruccion de bloque, para detectar si se ha roto un bloque
-        EventManager.Instance.OnBlockDestroyed += HandleBlockDestroyed;
-
         Debug.Log($"Nivel {fileName} cargado con {_remainingBlocks} bloques.");
+        _loadingNext = false;
         //-----------GENERATE BLOCKS----------
 
         //-----------POWER UPS----------
         PowerUpManager.Instance.ResetPowerUps();
         //-----------POWER UPS----------
+
     }
 
     void HandleBlockDestroyed()
     {
-        //TODO: Agregar una clase aparte que haga generacion de powerUps Aleatoriamente con un random (Hay que añadir un array de prefabs de powerUps y elegir aleatoriamente entre la lista y si se va a generar o no)
-        Debug.Log("HandleBlockDestroyed");
+        
         _remainingBlocks--;
-
+        Debug.Log($"Bloques restantes = {_remainingBlocks}");
         if (_remainingBlocks <= 0 && !_loadingNext)
         {
             _loadingNext = true;
             Debug.Log("Nivel completado. Cargando siguiente...");
-            Invoke(nameof(LoadNextLevel), 1.5f);
+            Invoke(nameof(LoadNextLevel), .5f);
         }
     }
 
@@ -130,7 +130,7 @@ public class LevelLoader : MonoBehaviour
         _counter++;
         Debug.Log($"Counter: {_counter}");
         Debug.Log($"TotalLevels: {_totalLevels}");
-        if (_counter >= _totalLevels)
+        if (_counter > _totalLevels)
         {
             // TODO: NO FUNCIONA
             Debug.Log("¡Has completado todos los niveles!");
@@ -149,8 +149,14 @@ public class LevelLoader : MonoBehaviour
     // Nos desuscribimos del evento para evitar errores
     private void OnDestroy()
     {
-        EventManager.Instance.OnBlockDestroyed -= HandleBlockDestroyed;
+        //EventManager.Instance.OnBlockDestroyed -= HandleBlockDestroyed;
         EventManager.Instance.OnGameFinished -= SaveLevel;
         EventManager.Instance.OnBallLosted -= SaveLevel;
+    }
+
+    private void RestartLevel()// Recarga el nivel 1
+    {
+        _counter = GameManager.Instance.GetLevel();
+        LoadNextLevel();
     }
 }

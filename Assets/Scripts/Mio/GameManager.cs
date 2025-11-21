@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
     }
 
@@ -77,9 +77,17 @@ public class GameManager : MonoBehaviour
     }
 
     public void RestartLevel()
-    {       
-        // De momento resetea a la escena de inicio
-        SceneManager.LoadScene(2);
+    {
+        // De momento resetea a la escena de inicio (Cutrez)
+        this._lifes = 3;
+        this._points = 0;
+        this._time = 0;
+        this._level = 0;
+        UIManager.Instance.HideGameOverScreen();
+        UIManager.Instance.UpdateLife(_lifes);
+        UIManager.Instance.UpdatePoints(_points);
+        EventManager.Instance.InvokeLevelRestarted();
+        //SceneManager.LoadScene(2);
     }
 
     public void ExitMenu()
@@ -94,6 +102,14 @@ public class GameManager : MonoBehaviour
     public void SetTime(float time)
     {
         this._time = time;
+    }
+    /// <summary>
+    /// Metodo para actualizar el tiempo para guardarlo en el ranking
+    /// </summary>
+    /// <param name="time"></param>
+    public float GetTime()
+    {
+        return this._time;
     }
     /// <summary>
     /// Metodo para actualizar el nivel para guardarlo en el ranking
