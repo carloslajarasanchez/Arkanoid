@@ -9477,7 +9477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &760037695
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16222,7 +16222,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2090151639}
         m_TargetAssemblyTypeName: PauseController, Assembly-CSharp
-        m_MethodName: PauseGame
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21965,8 +21965,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _powerUpsPrefabs:
   - {fileID: 499528641263218783, guid: 40a0b609c9c0de74991a0e847c30fee6, type: 3}
+  - {fileID: 6689673270814360159, guid: 04df3d966b5b25347b796820ea52cd84, type: 3}
   _maxQuantity: 10
-  _minQuantity: 10
+  _minQuantity: 4
 --- !u!1 &1911422357
 GameObject:
   m_ObjectHideFlags: 0

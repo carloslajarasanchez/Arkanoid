@@ -33,6 +33,12 @@ public class AudioManager : MonoBehaviour
         sfxAudioSource.PlayOneShot(clip);
     }
 
+    public void PlayMusic(AudioClip clip)
+    {
+        musicAudioSource.clip = clip;
+        musicAudioSource.Play();
+    }
+
     public bool GetIsMusicPlaying()
     {
         return isMusicPlaying;

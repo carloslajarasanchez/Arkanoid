@@ -135,6 +135,7 @@ public class LevelLoader : MonoBehaviour
             // TODO: NO FUNCIONA
             Debug.Log("¡Has completado todos los niveles!");
             //TODO: Cargar escena final o de victoria
+            SceneManager.LoadScene("WinScene");
             return;
         }
         string levelname = _level + _counter.ToString();
