@@ -26,7 +26,7 @@ public class LevelTimer : MonoBehaviour
 
     private void SaveTime()
     {
-        GameManager.Instance.SetTime(_timeElapsed);
+        GameManager.Instance.Time = _timeElapsed;
     }
 
     private void OnDestroy()
@@ -46,7 +46,7 @@ public class LevelTimer : MonoBehaviour
 
     private void RestartTime()
     {
-        _timeElapsed = GameManager.Instance.GetTime();
+        _timeElapsed = GameManager.Instance.Time;
         UIManager.Instance.UpdateTimer(_timeElapsed);
     }
 

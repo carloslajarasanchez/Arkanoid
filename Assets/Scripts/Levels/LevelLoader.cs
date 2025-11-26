@@ -12,9 +12,9 @@ public class LevelLoader : MonoBehaviour
     [SerializeField]private float blockHeight = 0.5f;// Alto de los bloques
     public Vector2 startPos = new Vector2(-4f, 4f);// Posicion inicial donde se instancian los bloques
 
-    private int _remainingBlocks = 0;
+    private int _remainingBlocks = 0;// Bloques que quedan en total
     private bool _loadingNext = false;// Para controlar cuando pasar al siguiente nivel
-    private string _level = "level";
+    private string _level = "level";// Variable para controlar el nombre del archivo JSon
 
     private int _counter = 1;// Contador de niveles
     private int _totalLevels;// Cantidad de niveles
@@ -32,32 +32,35 @@ public class LevelLoader : MonoBehaviour
         //Actulizamos el nivel en el que estamos
         SaveLevel();
 
-        string levelname = _level + _counter.ToString();
+        string levelname = _level + _counter.ToString();// Cargamos el nivel que toque con el counter concatenando 
         EventManager.Instance.OnGameFinished += SaveLevel;// Para mandar el nivel maximo al que hemos llegado
         EventManager.Instance.OnBallLosted += SaveLevel;// Para detectar en que nivel estamos y actualizarlo en la UI   
         EventManager.Instance.OnBlockDestroyed += HandleBlockDestroyed;// Se suscribe al evento de destruccion de bloque, para detectar si se ha roto un bloque
-        EventManager.Instance.OnLevelRestarted += RestartLevel;
+        EventManager.Instance.OnLevelRestarted += RestartLevel;// Nos suscribimos al evento de resetear nivel
         LoadLevel(levelname); // Cargamos el nivel
     }
 
+    // Metodo para generar los bloques del nivel por un Json dependiendo del archivo
     void LoadLevel(string fileName)
     {
         //-----------GENERATE BLOCKS----------
-        // Limpiar bloques anteriores por seguridad
+        // Limpiamos los bloques anteriores por seguridad
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
         }
 
-        // Cargar JSON desde Resources
+        // Cargamos los JSON desde Resources
         TextAsset jsonFile = Resources.Load<TextAsset>(fileName);// Recogemos el archivo json
-        if (jsonFile == null)
+
+        if (jsonFile == null)// Si no se encuentra el Json
         {
             Debug.LogError($"No se encontró el archivo {fileName}.json en la carpeta Resources.");
-            return;
+            return;// Volvemos
         }
         else
         {
+            // Mostramos informacion por comprobar
             Debug.Log($"Archivo encontrado: {fileName}.json");
             Debug.Log($"Contenido JSON: {jsonFile.text}");
         }
@@ -82,10 +85,6 @@ public class LevelLoader : MonoBehaviour
                     );
 
                     GameObject block = Instantiate(blockPrefabs[blockType], pos, Quaternion.identity, transform);
-
-                    /*BlockController ctrl = block.GetComponent<BlockController>();
-                    if (ctrl != null)
-                        //ctrl.OnBlockDestroyed += HandleBlockDestroyed;*/
 
                     _remainingBlocks++;
                 }
@@ -121,7 +120,7 @@ public class LevelLoader : MonoBehaviour
 
     private void SaveLevel()
     {
-        GameManager.Instance.SetLevel(_counter);
+        GameManager.Instance.Level = _counter;
     }
 
     void LoadNextLevel()
@@ -157,7 +156,7 @@ public class LevelLoader : MonoBehaviour
 
     private void RestartLevel()// Recarga el nivel 1
     {
-        _counter = GameManager.Instance.GetLevel();
+        _counter = GameManager.Instance.Level;
         LoadNextLevel();
     }
 }

@@ -4,37 +4,39 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float _velocity = 7f;
+    [SerializeField] private float _velocity = 7f;// Velocidad del player
 
     [Header("Limits")]
-    [SerializeField]private GameObject _wallRight;
-    [SerializeField]private GameObject _wallLeft;
+    [SerializeField]private GameObject _wallRight;// Referencia a la pared derecha
+    [SerializeField]private GameObject _wallLeft;// Referencia a la pared derecha
 
     [Header("Sound Clips")]
-    [SerializeField] private AudioClip _respawnClip;
+    [SerializeField] private AudioClip _respawnClip;// Sonido de respawn del player para usarse con el AudioManager
 
-    private Animator _playerAnimator;
-    private float _minLimit;
-    private float _maxLimit;
-    private Vector2 _initialPosition;
-    private bool _canMove;
-    private List<PowerUp> actualPowerUp = new List<PowerUp>();
+    private Animator _playerAnimator;// Referencia al animador del player
+    private float _minLimit;// Limite minimo de movimiento en x
+    private float _maxLimit;// Limite maximo de movimiento en x
+    private Vector2 _initialPosition;// Posicion inicial del player
+    private bool _canMove;// Controla si el player puede moverse
+    private List<PowerUp> actualPowerUp = new List<PowerUp>();// Lista de los powerUps del player que tiene activos
  
 
     // Start is called before the first frame update
     void Start()
     {
-        _initialPosition = transform.position;
-        _playerAnimator = GetComponent<Animator>();
-        CalculateLimits();
-        EventManager.Instance.OnLevelFinished += ResetToInitialPosition;// Nos suscribimos al evento de nivel finalizado
-        EventManager.Instance.OnLevelFinished += LevelCompleteRespawnPlayer;// Nos suscribimos al evento de nivel finalizado
-        EventManager.Instance.OnBallLosted += DestroyPlayerAnimation;
+        _initialPosition = transform.position;// Guardamos la posicion inicial
+        _playerAnimator = GetComponent<Animator>();// Cogemos la referencia al animator
+        CalculateLimits();// Calculamos los limites del player con su tamaño actual
+
+        EventManager.Instance.OnLevelFinished += ResetToInitialPosition;// Nos suscribimos al evento de nivel finalizado para reiniciar la posicion
+        EventManager.Instance.OnLevelFinished += LevelCompleteRespawnPlayer;// Nos suscribimos al evento de nivel finalizado para respawnear al player
+        EventManager.Instance.OnBallLosted += DestroyPlayerAnimation;// Nos suscribimos al evento de perder la bola para ejecutar animacion de destruccion
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Si se puede mover
         if (_canMove)
         {
             Move();
@@ -42,8 +44,10 @@ public class Player : MonoBehaviour
         
     }
 
+    // Metodo para mover al player
     private void Move()
     {
+        // Si el input en x es distinto de 0 
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
 
@@ -55,12 +59,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Metodo para calcular los limites de las paredes
     public void CalculateLimits()
     {
-        _minLimit = _wallLeft.transform.position.x + _wallLeft.transform.localScale.x/2 + transform.localScale.x/2;
-        _maxLimit = _wallRight.transform.position.x - _wallRight.transform.localScale.x/2 - transform.localScale.x/2;
+        _minLimit = _wallLeft.transform.position.x + _wallLeft.transform.localScale.x/2 + transform.localScale.x/2;// calculamos el limite izquierdo [posicion del muro en x - escala muro/2 + escalaJugador/2]
+        _maxLimit = _wallRight.transform.position.x - _wallRight.transform.localScale.x/2 - transform.localScale.x/2;// calculamos el limite derecho [posicion del muro en x - escala muro/2 + escalaJugador/2]
     }
 
+    // Metodo para reiniciar la posicion inicial
     public void ResetToInitialPosition()
     {
         transform.position = _initialPosition;

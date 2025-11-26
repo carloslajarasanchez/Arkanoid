@@ -21,11 +21,17 @@ public class GameManager : MonoBehaviour
     private float _time=0;
     private int _level=0;
 
+    public int Lifes { get { return _lifes; } set { _lifes = value; } }
+    public int Points { get { return _points; } set { _points = value; } }
+    public int Level { get { return _level; } set { _level = value; } }
+    public float Time { get { return _time; } set { _time = value; } }
+
  
 
     // Start is called before the first frame update
     void Awake()
     {
+        //Patron de singelton
         if(Instance != null && Instance !=this)
         {
             Destroy(this);
@@ -37,42 +43,41 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // Metodo para restar vidas
     public void RestLifes(int rest)
     {
+        // Si las vidas son mayores que lo que se le quita
         if(this._lifes > rest)
         {
-            this._lifes -= rest;
+            this._lifes -= rest;// Restamos las vidas          
+            UIManager.Instance.UpdateLife(_lifes);// Actualizamos las vidas en la UI
             Debug.Log($"Has perdido vida: {_lifes}");
-            UIManager.Instance.UpdateLife(_lifes);
         }
         else
         {
-            this._lifes = 0; // asegúrate de fijar a cero
-            Debug.Log("Has perdido");
+            this._lifes = 0; // Aseguramos que la vida es cero
+       
             UIManager.Instance.UpdateLife(_lifes);// Actualizamos las vidas
             EventManager.Instance.InvokeGameFinished();// Noticiamos que la partida ha terminado
             ScoreManager.Instance.AddNewScore(_level,_time,_points);// Guardamos la puntuacion en el ranking
             UIManager.Instance.ShowGameOverScreen();// Mostramos la pantalla de GameOver
-            //StartCoroutine(ResetLevel());
+
+            Debug.Log("Has perdido");
         }        
     }
 
+    // Metodo para sumar puntos
     public void AddPoints(int points)
     {
-        _points += points;
-        UIManager.Instance.UpdatePoints(_points);
+        _points += points;// Aumentamos los puntos
+        UIManager.Instance.UpdatePoints(_points);// Actualizamos los puntos en la UI
     }
 
+    // Metodo para sumar vidas
     public void AddLifes(int life)
     {        
-        _lifes += life;
-        UIManager.Instance.UpdateLife(_lifes);
+        _lifes += life;// Aumentamos la vida
+        UIManager.Instance.UpdateLife(_lifes);// Actualizamos la vida en la UI
         Debug.Log($"Suma de vida: {_lifes}");
     }
 
@@ -83,48 +88,16 @@ public class GameManager : MonoBehaviour
         this._points = 0;
         this._time = 0;
         this._level = 0;
-        UIManager.Instance.HideGameOverScreen();
-        UIManager.Instance.UpdateLife(_lifes);
-        UIManager.Instance.UpdatePoints(_points);
-        EventManager.Instance.InvokeLevelRestarted();
-        //SceneManager.LoadScene(2);
+        UIManager.Instance.HideGameOverScreen();// Escondemos el panel de GameOver
+        UIManager.Instance.UpdateLife(_lifes);// Actualizamos las vidas de la UI
+        UIManager.Instance.UpdatePoints(_points);// Actualizamos los puntos de la UI
+        EventManager.Instance.InvokeLevelRestarted();// Invocamos el metodo de reiniciar el nivel
     }
 
+    // Metodo para el boton de volver a la escena de titulo
     public void ExitMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("TitleMenu");// Carga la escena del Menu principal
     }
 
-    /// <summary>
-    /// Metodo para actualizar el tiempo para guardarlo en el ranking
-    /// </summary>
-    /// <param name="time"></param>
-    public void SetTime(float time)
-    {
-        this._time = time;
-    }
-    /// <summary>
-    /// Metodo para actualizar el tiempo para guardarlo en el ranking
-    /// </summary>
-    /// <param name="time"></param>
-    public float GetTime()
-    {
-        return this._time;
-    }
-    /// <summary>
-    /// Metodo para actualizar el nivel para guardarlo en el ranking
-    /// </summary>
-    /// <param name="level">Nivel al que ha llegado el jugador</param>
-    public void SetLevel(int level)
-    {
-        this._level = level;
-    }
-    /// <summary>
-    /// Metodo para dar el nivel en el que estamos
-    /// </summary>
-    /// <param name="level">Nivel al que ha llegado el jugador</param>
-    public int GetLevel()
-    {
-        return this._level;
-    }
 }

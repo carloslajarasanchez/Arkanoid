@@ -9,9 +9,10 @@ public class PowerUpAddLife : PowerUp
         base.Start();
         stackeable = true;
     }
+    
     public override void ApplyEffect()
     {
-        GameManager.Instance.AddLifes(1);
+        GameManager.Instance.AddLifes(1);// Aumentamos la vida del GameManager
     }
 
     public override void Remove()
