@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
     private float _maxLimit;
     private Vector2 _initialPosition;
     private bool _canMove;
-    private PowerUp actualPowerUp;
+    private List<PowerUp> actualPowerUp = new List<PowerUp>();
  
 
     // Start is called before the first frame update
@@ -69,19 +70,22 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("PowerUp"))
         {
-            if(actualPowerUp != null)// Si hay un powerUp activo se aplica el metodo revertir powerUp
-            {
-                actualPowerUp.RevertEffect();
-                //Destroy(actualPowerUp);
-            }
-
             PowerUp powerUp = collision.gameObject.GetComponent<PowerUp>();// Guardamos el powerUp recogido
 
-            if (powerUp != null)// Si no esta vacio
-            {
-                actualPowerUp = Instantiate(powerUp);// Lo asignamos como powerUp actual
+            if (powerUp.GetStakeable())// Si no esta vacio
+            {              
                 powerUp.ApplyEffect();// Aplicamos su efecto
-                Destroy(collision.gameObject);// Destruimos el powerUp
+                actualPowerUp.Add(powerUp);
+                collision.gameObject.SetActive(false);// Destruimos el powerUp
+            }
+            else
+            {               
+                foreach (PowerUp x in actualPowerUp) 
+                {
+                    x.Remove();
+                }
+                powerUp.ApplyEffect();// Aplicamos su efecto
+                actualPowerUp.Add(powerUp);
             }
         }
     }

@@ -10,6 +10,7 @@ public class PowerUpExpandPaddle : PowerUp
     {
         base.Start(); // Esto asegura que se suscriba al evento
         _player = FindAnyObjectByType<Player>().gameObject;
+        stackeable = false;
     }
     public override void ApplyEffect()
     {
@@ -23,10 +24,11 @@ public class PowerUpExpandPaddle : PowerUp
 
         _player.GetComponent<Player>().CalculateLimits();
     }
-    public override void RevertEffect()
+    public override void Remove()
     {
         _player.transform.localScale = _playerOriginalSize;
         _player.GetComponent<Player>().CalculateLimits();
+        
     }
 }
 

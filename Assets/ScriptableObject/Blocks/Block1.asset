@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hits: 1
   Points: 100
-  initialSprite: {fileID: 21300000, guid: 77280381bd90585419d5d1d77f04f72d, type: 3}
-  brokeSprite: {fileID: 21300000, guid: 2877e8d415154a447ab12482abe66840, type: 3}
+  initialSprite: {fileID: 1965708050, guid: 0b40c45be12d7f742a48f9dfaaa78143, type: 3}
+  brokeSprite: {fileID: 1764839357, guid: 22cf3fe6c0d0ff64aa2d085d482772ce, type: 3}
