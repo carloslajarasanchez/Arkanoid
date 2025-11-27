@@ -7,6 +7,8 @@ public class BlockController : MonoBehaviour
     private int _hitsToBreak;
     private int _points;
     private SpriteRenderer _spriteRenderer;
+    private bool _isDestroyed = false; // para evitar dobles colisiones
+
 
     private void Awake()
     {
@@ -18,6 +20,7 @@ public class BlockController : MonoBehaviour
     }
     public void Hit()
     {
+        if (_isDestroyed) return; // Si ya está destruido, no hacer nada
         _hitsToBreak--;
         //Para cambiar el sprite cuando le quede 1 golpe para romperse
         if (_hitsToBreak - 1 == 0)
@@ -27,12 +30,10 @@ public class BlockController : MonoBehaviour
 
         if (_hitsToBreak <= 0)
         {
-           
+            _isDestroyed = true; // Marcamos como destruido
             // Invoco el evento de destruccion de bloque
             EventManager.Instance.InvokeBlockDestroyed();
             // Generamos un power up
-            // TODO: alguna manera para no tener que estar llamando este metodo cuando se hayan generado el numero maximo de powerups del nivel
-            // Podria suscribirme desde el POwerUpManager pero necesito la posicion del bloque para instanciar el prefab
             PowerUpManager.Instance.GeneratePowerUp(this.transform);
             GameManager.Instance.AddPoints(_points);
             Destroy(this.gameObject);

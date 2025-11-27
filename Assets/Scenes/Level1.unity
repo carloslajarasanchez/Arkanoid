@@ -21964,6 +21964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _powerUpsPrefabs:
+  - {fileID: 7160671552305353123, guid: f58c8e1257cef654a8e779f4c8318fa0, type: 3}
   - {fileID: 499528641263218783, guid: 40a0b609c9c0de74991a0e847c30fee6, type: 3}
   - {fileID: 6689673270814360159, guid: 04df3d966b5b25347b796820ea52cd84, type: 3}
   _maxQuantity: 10

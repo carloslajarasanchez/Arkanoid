@@ -32,6 +32,7 @@ public abstract class PowerUp : MonoBehaviour
     // Este metodo destruye los powerUp al perder la bola
     private void DestroyPowerUp()
     {
+        Remove();
         Destroy(this.gameObject);
     }
 

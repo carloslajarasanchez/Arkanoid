@@ -20,11 +20,13 @@ public class GameManager : MonoBehaviour
     private int _points = 0;
     private float _time=0;
     private int _level=0;
+    private int _balls = 1;
 
     public int Lifes { get { return _lifes; } set { _lifes = value; } }
     public int Points { get { return _points; } set { _points = value; } }
     public int Level { get { return _level; } set { _level = value; } }
     public float Time { get { return _time; } set { _time = value; } }
+    public int Balls { get { return _balls; } set {_balls = value; } }
 
  
 

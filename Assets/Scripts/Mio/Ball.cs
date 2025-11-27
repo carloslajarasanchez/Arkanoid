@@ -10,6 +10,10 @@ public class Ball : MonoBehaviour
     private Rigidbody2D _rb2D;// Rigidbody2D de la bola
     private bool _launched = false;// Variable para controlar si la bola se ha lanzado
     private bool _restared = false;// Variable para controlar que la bola no se lance cuando se haya perdido
+    private bool _isClone = false;
+
+    public bool IsClone { get { return _isClone; } set { _isClone = value; } }
+
 
     [Header("Dependencias")]
     [SerializeField]private GameObject _launchParent;// Referencia a la pala
@@ -24,8 +28,11 @@ public class Ball : MonoBehaviour
     {
         _rb2D = GetComponent<Rigidbody2D>();// Seteamos la variable Rigidbody de la bola para poder modificarla
         //_launchParent = GameObject.FindGameObjectWithTag("Player");
-        ResetBall();// Reseteamos la posición de la bola a la de la Pala
-        transform.SetParent(_launchParent.transform, false);// Convertimos a la Pala en padre de la bola para que siga su movimiento
+        if (!_isClone)
+        {
+            ResetBall();// Reseteamos la posición de la bola a la de la Pala
+            transform.SetParent(_launchParent.transform, true);// Convertimos a la Pala en padre de la bola para que siga su movimiento
+        }      
 
         EventManager.Instance.OnLevelFinished += ResetBall;// Nos suscribimos el evento de nivel finalizado
         EventManager.Instance.OnGameFinished += CanLauch;
@@ -58,13 +65,27 @@ public class Ball : MonoBehaviour
     {
         if (collision.CompareTag("Limit"))// Comparamos si ha atravesado los limites
         {
+            if(GameManager.Instance.Balls <= 1)
+            {
+                gameObject.SetActive(true);
+                GameManager.Instance.RestLifes(1);// Llamamos al GameManager para restar vidas del jugador
+                AudioManager.Instance.PlaySound(_loseBallSound);
+                EventManager.Instance.InvokeBallLosted();// Activamos el evento de bola perdida
+                ResetBall();// Reiniciamos la posicion de la bola
+            }
+            else
+            {
+                if (IsClone)
+                {
+                    Destroy(this.gameObject);
+                }
+                
+                GameManager.Instance.Balls--;
+                Debug.Log($"Bolas restantes: {GameManager.Instance.Balls}");
+            }
             
-            GameManager.Instance.RestLifes(1);// Llamamos al GameManager para restar vidas del jugador
-            AudioManager.Instance.PlaySound(_loseBallSound);
-            EventManager.Instance.InvokeBallLosted();// Activamos el evento de bola perdida
-            ResetBall();// Reiniciamos la posicion de la bola
         }
-       VelocityFix();
+       //VelocityFix();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -108,6 +129,12 @@ public class Ball : MonoBehaviour
     // Metodo para resetear la posicion de la bola a la Pala
     public void ResetBall()
     {
+        // Para evitar que se queden bolas residuales
+        if (IsClone)
+        {
+            Destroy(this.gameObject);
+        }
+        gameObject.SetActive(true);
         _rb2D.velocity = Vector2.zero;// Seteamos la velocidad de la bola a cero para evitar que se le siga aplicando una fuerza
         _launched = false;// Cambiamos para poder volver a lanzar la bola
 
@@ -116,6 +143,8 @@ public class Ball : MonoBehaviour
         ballPosition.x = _launchParent.transform.position.x;// Calculamos la posicion X respecto a la Pala
         transform.position = ballPosition;// Asignamos al transform el Vector2 que hemos calculado
         transform.SetParent(_launchParent.transform, true);// Volvemos a emparentar la bola a la Pala para que siga su movimiento
+
+        
     }
 
     // Metodo para arreglar el movimiento de la bola cuando se queda rebotando de forma paralela o vertical
