@@ -1,0 +1,153 @@
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Linq;
+
+public class LevelLoader : MonoBehaviour
+{
+    [Header("Block Prefabs of type (índice = número en JSON)")]
+    [SerializeField] private GameObject[] blockPrefabs;// Prefabs de los bloques a instanciar
+
+    [Header("Level configuration")]
+    [SerializeField]private float blockWidth = 1f;// Ancho de los bloques
+    [SerializeField]private float blockHeight = 0.5f;// Alto de los bloques
+    public Vector2 startPos = new Vector2(-4f, 4f);// Posicion inicial donde se instancian los bloques
+
+    private int _remainingBlocks = 0;// Bloques que quedan en total
+    private bool _loadingNext = false;// Para controlar cuando pasar al siguiente nivel
+    private string _level = "level";// Variable para controlar el nombre del archivo JSon
+
+    private int _counter = 1;// Contador de niveles
+    private int _totalLevels;// Cantidad de niveles
+
+    void Start()
+    {
+        // Cargar todos los archivos JSON que empiecen por "level"
+        TextAsset[] allLevels = Resources.LoadAll<TextAsset>("");
+
+        // Filtrar solo los que contienen "level" en el nombre
+        _totalLevels = allLevels.Count(t => t.name.StartsWith("level"));
+
+        Debug.Log($"Se encontraron {_totalLevels} niveles.");
+
+        //Actulizamos el nivel en el que estamos
+        SaveLevel();
+
+        string levelname = _level + _counter.ToString();// Cargamos el nivel que toque con el counter concatenando 
+        EventManager.Instance.OnGameFinished += SaveLevel;// Para mandar el nivel maximo al que hemos llegado
+        EventManager.Instance.OnBallLosted += SaveLevel;// Para detectar en que nivel estamos y actualizarlo en la UI   
+        EventManager.Instance.OnBlockDestroyed += HandleBlockDestroyed;// Se suscribe al evento de destruccion de bloque, para detectar si se ha roto un bloque
+        EventManager.Instance.OnLevelRestarted += RestartLevel;// Nos suscribimos al evento de resetear nivel
+        LoadLevel(levelname); // Cargamos el nivel
+    }
+
+    // Metodo para generar los bloques del nivel por un Json dependiendo del archivo
+    void LoadLevel(string fileName)
+    {
+        //-----------GENERATE BLOCKS----------
+        // Limpiamos los bloques anteriores por seguridad
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Cargamos los JSON desde Resources
+        TextAsset jsonFile = Resources.Load<TextAsset>(fileName);// Recogemos el archivo json
+
+        if (jsonFile == null)// Si no se encuentra el Json
+        {
+            Debug.LogError($"No se encontró el archivo {fileName}.json en la carpeta Resources.");
+            return;// Volvemos
+        }
+        else
+        {
+            // Mostramos informacion por comprobar
+            Debug.Log($"Archivo encontrado: {fileName}.json");
+            Debug.Log($"Contenido JSON: {jsonFile.text}");
+        }
+
+        // Deserializar JSON
+        LevelData data = JsonUtility.FromJson<LevelData>(jsonFile.text);
+
+        // Generar bloques
+        _remainingBlocks = 0;
+        for (int row = 0; row < data.rows.Count; row++)
+        {
+            for (int col = 0; col < data.rows[row].cols.Count; col++)
+            {
+                int blockType = data.rows[row].cols[col];// Recogemos el tipo de bloque
+                if (blockType == 0) continue;// Si es 0 no generamos ninguno
+
+                if (blockType < blockPrefabs.Length && blockPrefabs[blockType] != null)
+                {
+                    Vector2 pos = new Vector2(
+                        startPos.x + col * blockWidth,
+                        startPos.y - row * blockHeight
+                    );// Creamos su posicion
+
+                    GameObject block = Instantiate(blockPrefabs[blockType], pos, Quaternion.identity, transform);// Instaciamos el bloque
+
+                    _remainingBlocks++;// Aumentamos la cantidad de bloques en escena
+                }
+                else
+                {
+                    Debug.LogWarning($"No hay prefab asignado para el bloque tipo {blockType}");
+                }
+            }
+        }
+        _loadingNext = false;// Ya no estamos cargando nivel
+
+        //-----------POWER UPS----------
+        PowerUpManager.Instance.ResetPowerUps();// Reiniciamos la cantidad de powerUps
+    }
+
+    // Metodo que cuenta si se ha roto todos los bloques
+    void HandleBlockDestroyed()
+    {
+        
+        _remainingBlocks--;
+        Debug.Log($"Bloques restantes = {_remainingBlocks}");
+        if (_remainingBlocks <= 0 && !_loadingNext)// Si se han roto todos los bloque y no estamos cargando un nivel
+        {
+            _loadingNext = true;
+            Debug.Log("Nivel completado. Cargando siguiente...");
+            Invoke(nameof(LoadNextLevel), .5f);// Cargamos el siguiente nivel
+        }
+    }
+
+    // Metodo para guardar el valor del nivel
+    private void SaveLevel()
+    {
+        GameManager.Instance.Level = _counter;
+    }
+
+    // Metodo para generar el siguiente nivel
+    void LoadNextLevel()
+    {      
+        _counter++;
+        if (_counter > _totalLevels)
+        {
+            Debug.Log("¡Has completado todos los niveles!");
+            SceneManager.LoadScene("WinScene");// Carga la escena final
+            return;
+        }
+        string levelname = _level + _counter.ToString();// Creamos el nombre del siguiente archivo
+
+        // Llamamos al evento de nivel terminado.
+        EventManager.Instance.InvokeLevelFinished();
+        LoadLevel( levelname );// Cargamos el nivel
+    }
+
+    // Nos desuscribimos del evento para evitar errores
+    private void OnDestroy()
+    {
+        //EventManager.Instance.OnBlockDestroyed -= HandleBlockDestroyed;
+        EventManager.Instance.OnGameFinished -= SaveLevel;
+        EventManager.Instance.OnBallLosted -= SaveLevel;
+    }
+    // Metodo para recarga el nivel 1
+    private void RestartLevel()
+    {
+        _counter = GameManager.Instance.Level;
+        LoadNextLevel();
+    }
+}
